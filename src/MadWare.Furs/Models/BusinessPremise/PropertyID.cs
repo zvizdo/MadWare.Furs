@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MadWare.Furs.Request.Models.BusinessPremise
+namespace MadWare.Furs.Models.BusinessPremise
 {
     public class PropertyID
     {

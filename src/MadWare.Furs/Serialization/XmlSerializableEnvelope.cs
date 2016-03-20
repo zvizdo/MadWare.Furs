@@ -11,7 +11,7 @@ namespace MadWare.Furs.Serialization
 {
     public class XmlEnvelopeSerializer : IEnvelopeSerializer
     {
-        public T DeserializeEnvelope<T>(T m)
+        public Envelope<T> DeserializeEnvelope<T>(Envelope<T> e) where T : BaseRequestBody
         {
             throw new NotImplementedException();
         }

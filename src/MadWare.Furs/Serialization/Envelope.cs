@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace MadWare.Furs.Request
+namespace MadWare.Furs.Serialization
 {
     [XmlRoot(ElementName = "Envelope", Namespace = "http://schemas.xmlsoap.org/soap/envelope/")]
     public class Envelope<T> where T : BaseRequestBody

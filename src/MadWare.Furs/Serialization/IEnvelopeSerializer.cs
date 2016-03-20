@@ -11,7 +11,7 @@ namespace MadWare.Furs.Serialization
 
         string SerializeEnvelope<T>(Envelope<T> e) where T : BaseRequestBody;
 
-        T DeserializeEnvelope<T>(T m);
+        Envelope<T> DeserializeEnvelope<T>(Envelope<T> e) where T : BaseRequestBody;
 
     }
 }

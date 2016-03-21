@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MadWare.Furs.Serialization;
-using MadWare.Furs.Request;
+using MadWare.Furs.Requests;
 using MadWare.Furs.Models.Invoice;
 using System.Security.Cryptography.X509Certificates;
 using System.Globalization;

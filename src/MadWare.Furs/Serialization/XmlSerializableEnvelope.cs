@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MadWare.Furs.Request;
+using MadWare.Furs.Requests;
 using System.Xml.Serialization;
 using System.IO;
 using System.Xml;

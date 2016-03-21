@@ -1,6 +1,6 @@
 ﻿using MadWare.Furs.Models.BusinessPremise;
 using MadWare.Furs.Models.Common;
-using MadWare.Furs.Request;
+using MadWare.Furs.Requests;
 using MadWare.Furs.Serialization;
 using System;
 using Xunit;

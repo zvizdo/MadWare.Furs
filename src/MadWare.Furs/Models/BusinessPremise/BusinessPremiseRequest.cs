@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace MadWare.Furs.Models.BusinessPremise
 {
-    public class BusinessPremiseRequest
+    public class BusinessPremiseRequest 
     {
         [XmlAttribute()]
         public string Id = "data";
@@ -18,7 +18,7 @@ namespace MadWare.Furs.Models.BusinessPremise
         public Header Header { get; set; }
 
         /// <summary>
-        /// Poslovni prostor / Business premises
+        /// Poslovni prostor / Business premise
         /// </summary>
         public BusinessPremise BusinessPremise { get; set; }
     }

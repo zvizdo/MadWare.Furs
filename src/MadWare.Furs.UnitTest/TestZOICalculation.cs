@@ -1,4 +1,4 @@
-﻿using MadWare.Furs.Request;
+﻿using MadWare.Furs.Requests;
 using MadWare.Furs.Serialization;
 using MadWare.Furs.ZOI;
 using System;

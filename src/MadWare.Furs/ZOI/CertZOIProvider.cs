@@ -32,10 +32,10 @@ namespace MadWare.Furs.ZOI
             return sBuilder.ToString();
         }
 
-        public void CalculateZOI<T>(Envelope<T> e) where T : BaseRequestBody
+        public void CalculateZOI(BaseRequestBody b)
         {
-            var invReq = e as Envelope<InvoiceRequestBody>;
-            Invoice i = invReq.Body.InvoiceRequest.Invoice;
+            var inv = b as InvoiceRequestBody;
+            Invoice i = inv.InvoiceRequest.Invoice;
 
             string data = string.Concat( i.TaxNumber,
                                          i.IssueDateTime.ToString("dd.MM.yyyy HH:mm:ss"),
@@ -59,15 +59,15 @@ namespace MadWare.Furs.ZOI
             i.ProtectedID = zoi;
         }
 
-        public bool MustCalculateZOI<T>(Envelope<T> e) where T : BaseRequestBody
+        public bool MustCalculateZOI(BaseRequestBody b)
         {
-            if (e.Body == null)
+            if (b == null)
                 return false;
 
-            if (!(e.Body is InvoiceRequestBody))
+            if (!(b is InvoiceRequestBody))
                 return false;
 
-            var invReqBody = e.Body as InvoiceRequestBody;
+            var invReqBody = b as InvoiceRequestBody;
             if (invReqBody.InvoiceRequest == null || invReqBody.InvoiceRequest.Invoice == null)
                 return false;
 

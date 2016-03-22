@@ -15,9 +15,7 @@ namespace MadWare.Furs.UnitTest
         {
             IEnvelopeSerializer s = new XmlEnvelopeSerializer();
 
-            var echo = new EchoRequestBody { EchoRequest = "TEST" };
-
-            var e = new Envelope<EchoRequestBody> { Body = echo };
+            var e = new EchoRequestBody { EchoRequest = "TEST" };
 
             string xml = s.SerializeEnvelope(e);
         }
@@ -69,9 +67,7 @@ namespace MadWare.Furs.UnitTest
                 }
             };
 
-            var e = new Envelope<BaseRequestBody> { Body = bp };
-
-            string xml = s.SerializeEnvelope(e);
+            string xml = s.SerializeEnvelope(bp);
         }
 
         [Fact]
@@ -126,9 +122,7 @@ namespace MadWare.Furs.UnitTest
                 }
             };
 
-            var e = new Envelope<InvoiceRequestBody> { Body = inv };
-
-            string xml = s.SerializeEnvelope(e);
+            string xml = s.SerializeEnvelope(inv);
         }
 
         [Fact]
@@ -213,9 +207,7 @@ namespace MadWare.Furs.UnitTest
                 }
             };
 
-            var e = new Envelope<InvoiceRequestBody> { Body = inv };
-
-            string xml = s.SerializeEnvelope(e);
+            string xml = s.SerializeEnvelope(inv);
         }
 
     }

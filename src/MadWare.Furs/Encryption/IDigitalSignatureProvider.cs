@@ -1,4 +1,5 @@
-﻿using MadWare.Furs.Serialization;
+﻿using MadWare.Furs.Requests;
+using MadWare.Furs.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,6 @@ namespace MadWare.Furs.Encryption
         /// <param name="payload">Payload to add signature</param>
         /// <param name="e">Serialized representation of the payload</param>
         /// <returns>Signed payload</returns>
-        string Sign(string payload, Envelope<BaseRequestBody> e);
+        string Sign(string payload, BaseRequestBody b);
     }
 }

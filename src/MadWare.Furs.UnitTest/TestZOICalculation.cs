@@ -16,19 +16,19 @@ namespace MadWare.Furs.UnitTest
         {
             return new[] {
                 new object[] {
-                    new Envelope<BaseRequestBody> { Body = new InvoiceRequestBody { InvoiceRequest = new Models.Invoice.InvoiceRequest { Invoice = new Models.Invoice.Invoice() } } },
+                     new InvoiceRequestBody { InvoiceRequest = new Models.Invoice.InvoiceRequest { Invoice = new Models.Invoice.Invoice() } },
                     true
                 },
                 new object[] {
-                    new Envelope<BaseRequestBody> { Body = new InvoiceRequestBody { InvoiceRequest = new Models.Invoice.InvoiceRequest { } } },
+                    new InvoiceRequestBody { InvoiceRequest = new Models.Invoice.InvoiceRequest { } },
                     false
                 },
                 new object[] {
-                    new Envelope<BaseRequestBody> { Body = new InvoiceRequestBody { InvoiceRequest = new Models.Invoice.InvoiceRequest { SalesBookInvoice = new Models.Invoice.SalesBookInvoice() } } },
+                    new InvoiceRequestBody { InvoiceRequest = new Models.Invoice.InvoiceRequest { SalesBookInvoice = new Models.Invoice.SalesBookInvoice() } },
                     false
                 },
                 new object[] {
-                    new Envelope<BaseRequestBody> { Body = new BusinessPremiseRequestBody { BusinessPremiseRequest = new Models.BusinessPremise.BusinessPremiseRequest { } } },
+                    new BusinessPremiseRequestBody { BusinessPremiseRequest = new Models.BusinessPremise.BusinessPremiseRequest { } },
                     false
                 }
             };
@@ -36,11 +36,11 @@ namespace MadWare.Furs.UnitTest
 
         [Theory]
         [MemberData("TestDataMustCalculateZOI")]
-        public void TestMustCalculateZOI<T>(Envelope<BaseRequestBody> e, bool doCalc)
+        public void TestMustCalculateZOI(BaseRequestBody b, bool doCalc)
         {
             IZOIProvider zoiProvider = new CertZOIProvider(null);
 
-            Assert.Equal(doCalc, zoiProvider.MustCalculateZOI(e));
+            Assert.Equal(doCalc, zoiProvider.MustCalculateZOI(b));
         }
 
         public static IEnumerable<object[]> TestDataCalculateZOI()
@@ -60,14 +60,14 @@ namespace MadWare.Furs.UnitTest
 
         [Theory]
         [MemberData("TestDataCalculateZOI")]
-        public void TestCalculateZOI<T>(Envelope<InvoiceRequestBody> e)
+        public void TestCalculateZOI(InvoiceRequestBody b)
         {
             var cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(@"E:\Programiranje\MadWare.Furs\src\MadWare.Furs.UnitTest\10442529-1.p12", "SAMR6ADL8IE6");
             IZOIProvider zoiProvider = new CertZOIProvider(cert);
 
-            zoiProvider.CalculateZOI(e);
+            zoiProvider.CalculateZOI(b);
 
-            string zoi = e.Body.InvoiceRequest.Invoice.ProtectedID;
+            string zoi = b.InvoiceRequest.Invoice.ProtectedID;
         }
 
 

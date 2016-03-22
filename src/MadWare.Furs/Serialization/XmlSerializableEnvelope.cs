@@ -6,18 +6,22 @@ using MadWare.Furs.Requests;
 using System.Xml.Serialization;
 using System.IO;
 using System.Xml;
+using MadWare.Furs.Responses;
+using MadWare.Furs.Serialization;
 
 namespace MadWare.Furs.Serialization
 {
     public class XmlEnvelopeSerializer : IEnvelopeSerializer
     {
-        public Envelope<T> DeserializeEnvelope<T>(Envelope<T> e) where T : BaseRequestBody
+        public BaseResponseBody DeserializeEnvelope(BaseRequestBody b)
         {
             throw new NotImplementedException();
         }
 
-        public string SerializeEnvelope<T>(Envelope<T> e) where T : BaseRequestBody
+        public string SerializeEnvelope(BaseRequestBody b)
         {
+            var e = new Envelope<BaseRequestBody> { Body = b };
+
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
             ns.Add("soapenv", "http://schemas.xmlsoap.org/soap/envelope/");
             ns.Add("fu", "http://www.fu.gov.si/");

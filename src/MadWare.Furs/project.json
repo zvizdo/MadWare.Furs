@@ -7,7 +7,7 @@
   "licenseUrl": "",
 
   "dependencies": {
-    
+    "System.Net.Http": "4.0.0"
   },
 
   "frameworks": {
@@ -16,7 +16,8 @@
         "System.XML": "4.0.0.0",
         "System.Xml.Serialization": "4.0.0.0",
         "System.Security": "4.0.0.0",
-        "System.Deployment": "4.0.0.0"
+        "System.Deployment": "4.0.0.0",
+        "System.Net.Http.WebRequest": "4.0.0.0"
       }
     },
     "net451": {
@@ -24,7 +25,8 @@
         "System.XML": "4.0.0.0",
         "System.Xml.Serialization": "4.0.0.0",
         "System.Security": "4.0.0.0",
-        "System.Deployment": "4.0.0.0"
+        "System.Deployment": "4.0.0.0",
+        "System.Net.Http.WebRequest": "4.0.0.0"
       }
     },
     "net452": {
@@ -32,7 +34,8 @@
         "System.XML": "4.0.0.0",
         "System.Xml.Serialization": "4.0.0.0",
         "System.Security": "4.0.0.0",
-        "System.Deployment": "4.0.0.0"
+        "System.Deployment": "4.0.0.0",
+        "System.Net.Http.WebRequest": "4.0.0.0"
       }
     }
   }

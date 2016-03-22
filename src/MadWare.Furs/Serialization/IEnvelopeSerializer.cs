@@ -1,4 +1,5 @@
 ﻿using MadWare.Furs.Requests;
+using MadWare.Furs.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace MadWare.Furs.Serialization
     public interface IEnvelopeSerializer
     {
 
-        string SerializeEnvelope<T>(Envelope<T> e) where T : BaseRequestBody;
+        string SerializeEnvelope(BaseRequestBody b);
 
-        Envelope<T> DeserializeEnvelope<T>(Envelope<T> e) where T : BaseRequestBody;
+        BaseResponseBody DeserializeEnvelope(BaseRequestBody b);
 
     }
 }

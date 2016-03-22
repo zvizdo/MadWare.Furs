@@ -19,7 +19,7 @@ namespace MadWare.Furs.Requests
 
         public override string GetSOAPAction()
         {
-            return @"SOAPAction: /echo";
+            return @"/echo";
         }
     }
 }

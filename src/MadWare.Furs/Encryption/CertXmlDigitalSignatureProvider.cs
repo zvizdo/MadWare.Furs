@@ -8,6 +8,7 @@ using System.Xml;
 using System.Security.Cryptography;
 using System.Deployment.Internal.CodeSigning;
 using System.Security.Cryptography.Xml;
+using MadWare.Furs.Requests;
 
 namespace MadWare.Furs.Encryption
 {
@@ -21,10 +22,10 @@ namespace MadWare.Furs.Encryption
             this.cert = cert;
         }
 
-        public string Sign(string payload, Envelope<BaseRequestBody> e)
+        public string Sign(string payload, BaseRequestBody b)
         {
             //Get id value of the main payload node
-            string dataId = e.Body.GetDataIdValue();
+            string dataId = b.GetDataIdValue();
 
             if (string.IsNullOrEmpty(dataId))
                 return payload;

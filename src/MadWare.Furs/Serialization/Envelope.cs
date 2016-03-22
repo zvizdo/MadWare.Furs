@@ -12,6 +12,10 @@ namespace MadWare.Furs.Serialization
         public T Body { get; set; }
     }
 
+    [XmlInclude(typeof(Requests.EchoRequestBody))]
+    [XmlInclude(typeof(Requests.BusinessPremiseRequestBody))]
+    [XmlInclude(typeof(Requests.InvoiceRequestBody))]
+    [XmlRoot(Namespace = "http://www.fu.gov.si/")]
     public abstract class BaseRequestBody
     {
         /// <summary>

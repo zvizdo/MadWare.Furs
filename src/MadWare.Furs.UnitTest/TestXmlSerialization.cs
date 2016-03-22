@@ -69,7 +69,7 @@ namespace MadWare.Furs.UnitTest
                 }
             };
 
-            var e = new Envelope<BusinessPremiseRequestBody> { Body = bp };
+            var e = new Envelope<BaseRequestBody> { Body = bp };
 
             string xml = s.SerializeEnvelope(e);
         }

@@ -12,12 +12,6 @@ namespace MadWare.Furs.UnitTest
     public class TestZOICalculation
     {
 
-        public class MustCalculateZOIHolder
-        {
-            public Envelope<BaseRequestBody> e { get; set; }
-            public bool doCalc { get; set; }
-        }
-
         public static IEnumerable<object[]> TestDataMustCalculateZOI()
         {
             return new[] {

@@ -14,19 +14,25 @@
     "net45": {
       "frameworkAssemblies": {
         "System.XML": "4.0.0.0",
-        "System.Xml.Serialization": "4.0.0.0"
+        "System.Xml.Serialization": "4.0.0.0",
+        "System.Security": "4.0.0.0",
+        "System.Deployment": "4.0.0.0"
       }
     },
     "net451": {
       "frameworkAssemblies": {
         "System.XML": "4.0.0.0",
-        "System.Xml.Serialization": "4.0.0.0"
+        "System.Xml.Serialization": "4.0.0.0",
+        "System.Security": "4.0.0.0",
+        "System.Deployment": "4.0.0.0"
       }
     },
     "net452": {
       "frameworkAssemblies": {
         "System.XML": "4.0.0.0",
-        "System.Xml.Serialization": "4.0.0.0"
+        "System.Xml.Serialization": "4.0.0.0",
+        "System.Security": "4.0.0.0",
+        "System.Deployment": "4.0.0.0"
       }
     }
   }

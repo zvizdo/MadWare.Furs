@@ -14,5 +14,10 @@ namespace MadWare.Furs.Requests
         {
             return this.BusinessPremiseRequest.Id;
         }
+
+        public override string GetSOAPAction()
+        {
+            return @"SOAPAction: /invoices/register";
+        }
     }
 }

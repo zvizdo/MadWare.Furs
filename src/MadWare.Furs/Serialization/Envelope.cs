@@ -23,6 +23,11 @@ namespace MadWare.Furs.Serialization
         /// </summary>
         /// <returns>Value</returns>
         public abstract string GetDataIdValue();
+
+        /// <summary>
+        /// Get SOAP action of the request
+        /// </summary>
+        public abstract string GetSOAPAction();
     }
 
 }

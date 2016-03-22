@@ -17,5 +17,10 @@ namespace MadWare.Furs.Requests
         {
             return this.InvoiceRequest.Id;
         }
+
+        public override string GetSOAPAction()
+        {
+            return @"SOAPAction: /invoices";
+        }
     }
 }

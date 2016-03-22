@@ -80,7 +80,6 @@ namespace MadWare.Furs.Encryption
             // Compute the signature.            
             xmlSig.ComputeSignature();
 
-
             // Get the XML representation of the signature and save 
             // it to an XmlElement object.
             XmlElement xmlDigitalSignature = xmlSig.GetXml();

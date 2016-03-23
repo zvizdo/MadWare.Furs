@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MadWare.Furs.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -40,6 +41,7 @@ namespace MadWare.Furs.Models.Invoice
         /// Podatek se vpisuje le, če račun vsebuje davke oziroma dajatve, ki niso DDV. / The data is entered only if the invoice includes taxes or duties, which are not VAT.
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
+        [DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? OtherTaxesAmount { get; set; }
 
         /// <summary>
@@ -47,6 +49,7 @@ namespace MadWare.Furs.Models.Invoice
         /// Podatek se vpiše le, če na računu obstaja znesek oproščenih dobav. / The data is entered only if the amount of exempt supplies exists on the invoice.
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
+        [DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? ExemptVATTaxableAmount { get; set; }
 
         /// <summary>
@@ -54,18 +57,21 @@ namespace MadWare.Furs.Models.Invoice
         /// Podatek se vpiše le, če na računu obstajajo takšne dobave. / The data is entered only if such supplies exist on the invoice.
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
+        [DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? ReverseVATTaxableAmount { get; set; }
 
         /// <summary>
         /// Vrednost neobdavčljivih dobav blaga ali storitev na računu (po zmanjšanju za popuste). Podatek se vpiše le, če na računu obstaja vrednost dobav, ki v skladu z Zakonom o davku na dodano vrednost niso predmet DDV. / The value of non-taxable supplies of goods or services on the invoice (after reduction for discounts). The data is entered only if the value of supplies, which are not subject to VAT in accordance with the Value Added Tax Act, exists on the invoice.
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
+        [DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? NontaxableAmount { get; set; }
 
         /// <summary>
         /// Vrednost dobav, za katere se uporablja posebna ureditev, po kateri se obdavčuje razlika v ceni, in sicer posebna ureditev za rabljeno blago, umetniške predmete, zbirke in starine (101. člen Zakona o davku na dodano vrednost). Vpiše se tudi vrednost dobav, za katere se obračunava in plačuje DDV po posebni ureditvi za potovalne agencije (97. člen Zakona o davku na dodano vrednost). Vpiše se znesek, ki je zmanjšan za popuste. / The value of supplies, for which a special arrangement is used, on the basis of which the margin is taxed, i.e. the special arrangement for second-hand goods, works of art, collector’s items and antiques (Article 101 of the Value Added Tax Act). The value of supplies is also entered, for which VAT is charged and paid according to the special arrangement for travel agencies (Article 97 of the Value Added Tax Act). The amount is entered, which is reduced for discounts.
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
+        [DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? SpecialTaxRulesAmount { get; set; }
 
         public bool ShouldSerializeSellerTaxNumber()

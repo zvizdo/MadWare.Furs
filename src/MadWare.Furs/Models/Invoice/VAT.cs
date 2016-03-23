@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MadWare.Furs.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,21 +20,21 @@ namespace MadWare.Furs.Models.Invoice
         /// Vrednost davčne stopnje. / Value of the tax rate
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
-        [Required]
+        [Required, DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? TaxRate { get; set; }
 
         /// <summary>
         /// Znesek davčne osnove (po zmanjšanju za popuste). / Amount of the tax base (after reduction for discounts)
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
-        [Required]
+        [Required, DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? TaxableAmount { get; set; }
 
         /// <summary>
         /// Znesek davka. / Amount of tax
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
-        [Required]
+        [Required, DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? TaxAmount { get; set; }
 
     }

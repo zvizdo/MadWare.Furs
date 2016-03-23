@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MadWare.Furs.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,21 +18,21 @@ namespace MadWare.Furs.Models.Invoice
         /// Vrednost stopnje pavšalnega nadomestila. / Value of the flat-rate compensation's rate
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
-        [Required]
+        [Required, DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? FlatRateRate { get; set; }
 
         /// <summary>
         /// Osnova oziroma vrednost od katere se obračuna znesek pavšalnega nadomestila (po zmanjšanju za popuste). / The base or value from which the amount of the flat-rate compensation is settled (after reduction for discounts).
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
-        [Required]
+        [Required, DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? FlatRateTaxableAmount { get; set; }
 
         /// <summary>
         /// Znesek pavšalnega nadomestila. / Amount of the flat-rate compensation
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
-        [Required]
+        [Required, DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? FlatRateAmount { get; set; }
 
     }

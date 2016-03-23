@@ -103,7 +103,7 @@ namespace MadWare.Furs.UnitTest
                             ElectronicDeviceID = "BLAG2",
                             InvoiceNumber = 145
                         },
-                        InvoiceAmount = Math.Round((66.7123M), 2),
+                        InvoiceAmount = Math.Round((66.7123M), 3),
                         PaymentAmount = Math.Round(1047.76M, 2),
                         TaxesPerSeller = new System.Collections.Generic.List<Models.Invoice.TaxesPerSeller> {
                             new Models.Invoice.TaxesPerSeller
@@ -129,6 +129,7 @@ namespace MadWare.Furs.UnitTest
                     }
                 }
             };
+            inv.ValidateBody();
 
             string xml = s.SerializeRequest(inv);
         }

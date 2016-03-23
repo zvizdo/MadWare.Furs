@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MadWare.Furs.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -73,7 +75,7 @@ namespace MadWare.Furs.Models.Invoice
         /// Vnese se skupni znesek računa. Vpiše se znesek računa skupaj z DDV in ostalimi davki/dajatvami, zmanjšan za zneske popustov. / The total amount of the invoice is entered. The amount of the invoice is entered together with VAT and other taxes/duties, decreased for amounts of discounts.
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
-        [Required]
+        [Required, DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? InvoiceAmount { get; set; }
 
         /// <summary>
@@ -81,13 +83,14 @@ namespace MadWare.Furs.Models.Invoice
         /// Podatek se vpiše le, če na računu obstajajo povračila. / The data is entered only if there are refunds on the invoice.
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
+        [DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? ReturnsAmount { get; set; }
 
         /// <summary>
         /// Vpiše se znesek računa za plačilo. / The amount of the invoice for payment is entered.
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
-        [Required]
+        [Required, DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? PaymentAmount { get; set; }
 
         /// <summary>

@@ -129,11 +129,11 @@ namespace MadWare.Furs.UnitTest
                         NumberingStructure = Models.Invoice.Invoice.NumberingStructureEnum.B,
                         InvoiceIdentifier = new Models.Invoice.InvoiceIdentifier
                         {
-                            BusinessPremiseID = "AKTEST1",
+                            BusinessPremiseID = "AKTEST",
                             ElectronicDeviceID = "SRV1",
                             InvoiceNumber = 1
                         },
-                        InvoiceAmount = 60.00M,
+                        InvoiceAmount = 60.011M,
                         PaymentAmount = 80.00M,
                         TaxesPerSeller = new List<Models.Invoice.TaxesPerSeller>
                         {

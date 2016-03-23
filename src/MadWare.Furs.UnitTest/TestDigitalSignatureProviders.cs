@@ -32,7 +32,7 @@ namespace MadWare.Furs.UnitTest
         [MemberData("TestDataCalculateSigInvoice")]
         public void TestDigitalSignatureXmlInvoice(BaseRequestBody b)
         {
-            IEnvelopeSerializer s = new XmlEnvelopeSerializer();
+            IPayloadSerializer s = new XmlPayloadSerializer();
             string payload = s.SerializeRequest(b);
 
             var cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(@"E:\Programiranje\MadWare.Furs\src\MadWare.Furs.UnitTest\10442529-1.p12", "SAMR6ADL8IE6");

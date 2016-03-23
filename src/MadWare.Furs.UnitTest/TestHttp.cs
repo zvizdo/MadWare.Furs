@@ -24,7 +24,7 @@ namespace MadWare.Furs.UnitTest
         [Fact]
         public async void TestHttpClient()
         {
-            IEnvelopeSerializer s = new XmlEnvelopeSerializer();
+            IPayloadSerializer s = new XmlPayloadSerializer();
             var e = new EchoRequestBody { EchoRequest = "TEST1" };
             string xml = s.SerializeRequest(e);
 
@@ -89,7 +89,7 @@ namespace MadWare.Furs.UnitTest
             #endregion
             bp.ValidateBody();
             //serialize first
-            IEnvelopeSerializer s = new XmlEnvelopeSerializer();
+            IPayloadSerializer s = new XmlPayloadSerializer();
             string payload = s.SerializeRequest(bp);
 
             //calculate ZOI
@@ -162,7 +162,7 @@ namespace MadWare.Furs.UnitTest
                 zoi.CalculateZOI(inv);
 
             //serialize first
-            IEnvelopeSerializer s = new XmlEnvelopeSerializer();
+            IPayloadSerializer s = new XmlPayloadSerializer();
             string payload = s.SerializeRequest(inv);
 
             //sign

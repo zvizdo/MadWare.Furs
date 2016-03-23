@@ -11,7 +11,7 @@ using MadWare.Furs.Serialization;
 
 namespace MadWare.Furs.Serialization
 {
-    public class XmlEnvelopeSerializer : IEnvelopeSerializer
+    public class XmlPayloadSerializer : IPayloadSerializer
     {
         public BaseResponseBody DeserializeResponse(BaseRequestBody b)
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MadWare.Furs.Serialization
 {
-    public interface IEnvelopeSerializer
+    public interface IPayloadSerializer
     {
 
         string SerializeRequest(BaseRequestBody b);

@@ -13,7 +13,7 @@ namespace MadWare.Furs.UnitTest
         [Fact]
         public void TestEchoSerialize()
         {
-            IEnvelopeSerializer s = new XmlEnvelopeSerializer();
+            IPayloadSerializer s = new XmlPayloadSerializer();
 
             var e = new EchoRequestBody { EchoRequest = "TEST" };
 
@@ -30,7 +30,7 @@ namespace MadWare.Furs.UnitTest
         [Fact]
         public void TestBusinessPremiseSerialize()
         {
-            IEnvelopeSerializer s = new XmlEnvelopeSerializer();
+            IPayloadSerializer s = new XmlPayloadSerializer();
 
             var bp = new BusinessPremiseRequestBody
             {
@@ -81,7 +81,7 @@ namespace MadWare.Furs.UnitTest
         [Fact]
         public void TestInvoiceSerialize()
         {
-            IEnvelopeSerializer s = new XmlEnvelopeSerializer();
+            IPayloadSerializer s = new XmlPayloadSerializer();
 
             var inv = new InvoiceRequestBody
             {
@@ -136,7 +136,7 @@ namespace MadWare.Furs.UnitTest
         [Fact]
         public void TestSalesBookInvoiceSerialize()
         {
-            IEnvelopeSerializer s = new XmlEnvelopeSerializer();
+            IPayloadSerializer s = new XmlPayloadSerializer();
 
             var inv = new InvoiceRequestBody
             {

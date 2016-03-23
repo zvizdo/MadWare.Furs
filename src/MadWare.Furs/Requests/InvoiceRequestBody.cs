@@ -25,7 +25,7 @@ namespace MadWare.Furs.Requests
 
         public override void ValidateBody()
         {
-            throw new NotImplementedException();
+            this.InvoiceRequest.Validate();
         }
     }
 }

@@ -43,6 +43,8 @@ namespace MadWare.Furs.Models.Invoice
         {
             base.Validate();
 
+            this.Header.Validate();
+
             if (this.Invoice != null)
                 this.Invoice.Validate();
 

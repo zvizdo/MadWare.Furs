@@ -59,13 +59,13 @@ namespace MadWare.Furs.UnitTest
                         BusinessPremiseID = "AKTEST",
                         BPIdentifier = new BPIdentifier
                         {
-                            /*RealEstateBP = new RealEstateBP
+                            RealEstateBP = new RealEstateBP
                             {
                                 PropertyID = new PropertyID
                                 {
-                                    BuildingNumber = "123",
-                                    BuildingSectionNumber = "12",
-                                    CadastralNumber = "1234"
+                                    BuildingNumber = 123,
+                                    BuildingSectionNumber = 12,
+                                    CadastralNumber = 1234
                                 },
                                 Address = new Address
                                 {
@@ -75,8 +75,8 @@ namespace MadWare.Furs.UnitTest
                                     City = "VRH",
                                     PostalCode = "1360"
                                 }
-                            }*/
-                            PremiseType = BPIdentifier.PremiseTypeEnum.A
+                            }
+                            //PremiseType = BPIdentifier.PremiseTypeEnum.A
                         },
                         ValidityDate = DateTime.Now.AddYears(1),
                         SoftwareSupplier = new SoftwareSupplier
@@ -87,7 +87,7 @@ namespace MadWare.Furs.UnitTest
                 }
             };
             #endregion
-
+            bp.ValidateBody();
             //serialize first
             IEnvelopeSerializer s = new XmlEnvelopeSerializer();
             string payload = s.SerializeRequest(bp);
@@ -104,6 +104,74 @@ namespace MadWare.Furs.UnitTest
             IHttpService http = new SoapHttpService(cert);
 
             string resp = await http.SendRequest(url, signedPayload, bp);
+
+        }
+
+        [Fact]
+        public async void TestHttpClientInvoice()
+        {
+            string url = "https://blagajne-test.fu.gov.si:9002/v1/cash_registers";
+            var cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(@"E:\Programiranje\MadWare.Furs\src\MadWare.Furs.UnitTest\10442529-1.p12", "SAMR6ADL8IE6");
+
+            var inv = new InvoiceRequestBody
+            {
+                InvoiceRequest = new Models.Invoice.InvoiceRequest
+                {
+                    Header = new Header
+                    {
+                        MessageID = Guid.NewGuid().ToString(),
+                        DateTime = DateTime.Now
+                    },
+                    Invoice = new Models.Invoice.Invoice
+                    {
+                        TaxNumber = "10442529",
+                        IssueDateTime = DateTime.Now,
+                        NumberingStructure = Models.Invoice.Invoice.NumberingStructureEnum.B,
+                        InvoiceIdentifier = new Models.Invoice.InvoiceIdentifier
+                        {
+                            BusinessPremiseID = "AKTEST1",
+                            ElectronicDeviceID = "SRV1",
+                            InvoiceNumber = 1
+                        },
+                        InvoiceAmount = 60.00M,
+                        PaymentAmount = 80.00M,
+                        TaxesPerSeller = new List<Models.Invoice.TaxesPerSeller>
+                        {
+                            new Models.Invoice.TaxesPerSeller
+                            {
+                                VAT = new List<Models.Invoice.VAT>
+                                {
+                                    new Models.Invoice.VAT
+                                    {
+                                        TaxRate = 22.00M,
+                                        TaxableAmount = 60.00M,
+                                        TaxAmount = 20.00M
+                                    }
+                                }
+                            }
+                        },
+                        OperatorTaxNumber = "10442529"
+                    }
+                }
+            };
+            inv.ValidateBody();
+
+            // calculate ZOI
+            IZOIProvider zoi = new CertZOIProvider(cert);
+            if (zoi.MustCalculateZOI(inv))
+                zoi.CalculateZOI(inv);
+
+            //serialize first
+            IEnvelopeSerializer s = new XmlEnvelopeSerializer();
+            string payload = s.SerializeRequest(inv);
+
+            //sign
+            IDigitalSignatureProvider dSig = new CertXmlDigitalSignatureProvider(cert);
+            string signedPayload = dSig.Sign(payload, inv);
+
+            IHttpService http = new SoapHttpService(cert);
+
+            string resp = await http.SendRequest(url, signedPayload, inv);
 
         }
 

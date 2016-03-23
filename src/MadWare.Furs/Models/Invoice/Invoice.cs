@@ -23,8 +23,19 @@ namespace MadWare.Furs.Models.Invoice
         /// <summary>
         /// Vpiše se datum in čas izdaje računa, ki je naveden na računu. / Date and time of issuing the invoice, which is stated on the invoice, are entered.
         /// </summary>
+        [XmlIgnore]
         [Required]
         public DateTime? IssueDateTime { get; set; }
+
+        [XmlElement("IssueDateTime")]
+        public string IssueDateTimeFormatted
+        {
+            get
+            {
+                return this.IssueDateTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
+            }
+            set { this.IssueDateTime = Convert.ToDateTime(value); }
+        }
 
         /// <summary>
         /// Vpiše se oznaka načina dodeljevanja številk računom / The mark is entered for the method of assigning numbers to invoices:

@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace MadWare.Furs.Models.BusinessPremise
 {
-    public class BusinessPremise
+    public class BusinessPremise : BaseModel
     {
         public enum ClosingTagEnum { Z }
 
         /// <summary>
         /// Davčna številka zavezanca, ki izdaja račune / Tax number of the person liable, who issues invoices
         /// </summary>
+        [Required(), StringLength(8, MinimumLength = 8)]
         public string TaxNumber { get; set; }
 
         /// <summary>
@@ -19,6 +22,7 @@ namespace MadWare.Furs.Models.BusinessPremise
         /// Oznaka mora biti enaka kot tista, ki je navedena na računih. / The mark shall be the same as the mark, stated on invoices.
         /// Oznaka je enkratna na nivoju zavezanca. / The mark is unique at the level of the person liable.
         /// </summary>
+        [Required(), StringLength(20, MinimumLength = 1), RegularExpression("^[0-9a-zA-Z]*$")]
         public string BusinessPremiseID { get; set; }
 
         /// <summary>
@@ -29,7 +33,19 @@ namespace MadWare.Furs.Models.BusinessPremise
         /// <summary>
         /// Datum začetka veljavnosti podatkov o poslovnem prostoru, ki se posredujejo. / The date when data about business premises, which are submitted, become valid.
         /// </summary>
-        public DateTime ValidityDate { get; set; }
+        [XmlIgnore]
+        [Required]
+        public DateTime? ValidityDate { get; set; }
+
+        [XmlElement("ValidityDate")]
+        public string ValidityDateFormatted
+        {
+            get
+            {
+                return this.ValidityDate.Value.ToUniversalTime().ToString("yyyy-MM-dd");
+            }
+            set { this.ValidityDate = DateTime.Parse(value); }
+        }
 
         /// <summary>
         /// Vpiše se podatek o zaprtju poslovnega prostora, če gre za trajno zaprtje. / The data is entered about the closure of business premises if the closure is permanent.
@@ -44,6 +60,7 @@ namespace MadWare.Furs.Models.BusinessPremise
         /// - Davčna številka pravne ali fizične osebe - proizvajalca ali vzdrževalca programske opreme s sedežem v Sloveniji in / tax number of a legal entity or an individual – producer or software maintenance provider established in Slovenia and
         /// - naziv in naslov proizvajalca ali vzdrževalca programske opreme, ki nima sedeža v Sloveniji / title and address of the producer or software maintenance provider not established in Slovenia
         /// </summary>
+        [Required]
         public SoftwareSupplier SoftwareSupplier { get; set; }
 
         /// <summary>
@@ -59,6 +76,14 @@ namespace MadWare.Furs.Models.BusinessPremise
         public bool ShouldSerializeSpecialNotes()
         {
             return !string.IsNullOrEmpty(this.SpecialNotes);
+        }
+
+        public override void Validate()
+        {
+            base.Validate();
+
+            this.BPIdentifier.Validate();
+            this.SoftwareSupplier.Validate();
         }
     }
 }

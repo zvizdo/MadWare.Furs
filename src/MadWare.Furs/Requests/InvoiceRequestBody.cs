@@ -22,5 +22,10 @@ namespace MadWare.Furs.Requests
         {
             return @"/invoices";
         }
+
+        public override void ValidateBody()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

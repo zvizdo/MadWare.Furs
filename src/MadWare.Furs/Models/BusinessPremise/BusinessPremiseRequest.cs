@@ -1,13 +1,14 @@
 ﻿using MadWare.Furs.Models.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace MadWare.Furs.Models.BusinessPremise
 {
-    public class BusinessPremiseRequest 
+    public class BusinessPremiseRequest : BaseModel
     {
         [XmlAttribute()]
         public string Id = "data";
@@ -15,11 +16,21 @@ namespace MadWare.Furs.Models.BusinessPremise
         /// <summary>
         /// Glava sporočila / Message header
         /// </summary>
+        [Required]
         public Header Header { get; set; }
 
         /// <summary>
         /// Poslovni prostor / Business premise
         /// </summary>
+        [Required]
         public BusinessPremise BusinessPremise { get; set; }
+
+        public override void Validate()
+        {
+            base.Validate();
+
+            this.Header.Validate();
+            this.BusinessPremise.Validate();
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MadWare.Furs.Models.BusinessPremise
 {
-    public class BPIdentifier
+    public class BPIdentifier : BaseModel
     {
         public enum PremiseTypeEnum { A, B, C }
 
@@ -30,6 +30,14 @@ namespace MadWare.Furs.Models.BusinessPremise
         public bool ShouldSerializePremiseType()
         {
             return this.PremiseType.HasValue;
+        }
+
+        public override void Validate()
+        {
+            base.Validate();
+
+            if (this.RealEstateBP != null)
+                this.RealEstateBP.Validate();
         }
     }
 }

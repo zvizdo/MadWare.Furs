@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,12 +10,13 @@ namespace MadWare.Furs.Models.Invoice
     /// Vpiše se številka izdanega računa iz vezane knjige računov, ki se spreminja, če je bil prvoten račun izdan iz vezane knjige računov. / The number is entered of the issued invoice from the pre-numbered invoice book, which is changed, if the original invoice has been issued from the pre-numbered invoice book.
     /// Podatek se vpiše v primeru, če se z računom, izdanim preko elektronske naprave, spreminja prvoten račun, ki je bil izdan iz vezane knjige računov. / The data is entered in cases when the original invoice is changed, which has been issued from the pre-numbered invoice book, with the invoice, issued via the electronic device.
     /// </summary>
-    public class ReferenceSalesBook
+    public class ReferenceSalesBook : BaseModel
     {
         /// <summary>
         /// Vpiše se številka izdanega računa iz vezane knjige računov, ki se spreminja, če je bil prvoten račun izdan iz vezane knjige računov. / The number is entered of the issued invoice from the pre-numbered invoice book, which is changed, if the original invoice has been issued from the pre-numbered invoice book.
         /// Podatek se vpiše v primeru, če se z računom, izdanim preko elektronske naprave, spreminja prvoten račun, ki je bil izdan iz vezane knjige računov. / The data is entered in cases when the original invoice is changed, which has been issued from the pre-numbered invoice book, with the invoice, issued via the electronic device.
         /// </summary>
+        [Required]
         public SalesBookIdentifier ReferenceSalesBookIdentifier { get; set; }
 
         /// <summary>
@@ -26,6 +28,13 @@ namespace MadWare.Furs.Models.Invoice
         public bool ShouldSerializeReferenceSalesBookIssueDate()
         {
             return this.ReferenceSalesBookIssueDate.HasValue;
+        }
+
+        public override void Validate()
+        {
+            base.Validate();
+
+            this.ReferenceSalesBookIdentifier.Validate();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -9,11 +10,12 @@ namespace MadWare.Furs.Models.Invoice
     /// <summary>
     /// Vpiše se vrednost osnov po vrsti davka ali dajatve, razdeljeno po davčnih stopnjah, in pripadajoči davek ali dajatev, vrednost dobav na podlagi posebnih ureditev, dobav pri katerih je plačnik DDV kupec blaga ali naročnik storitve, oproščenih dobav in neobdavčljivih dobav, ločeno po davčnih številkah davčnih zavezancev. / The value is entered for bases according to types of taxes or duties, separated per tax rates, and associated taxes or duties, value of supplies on the basis of special arrangements, supplies where the payer of VAT is the buyer of goods or party ordering services, exempt supplies and non-taxable supplies, separated according to tax numbers of taxpayers.
     /// </summary>
-    public class TaxesPerSeller
+    public class TaxesPerSeller : BaseModel
     {
         /// <summary>
         /// Vpiše se davčna številka davčnega zavezanca, v imenu in za račun katerega je bil izdan račun, če je račun izdan v tujem imenu in za tuj račun oziroma če je račun izdal prejemnik računa v imenu in za račun dobavitelja. Če račun ni bil izdan v tujem imenu in za tuj račun, se podatek ne vpisuje. / The tax number of the taxpayer is entered in the name of and on behalf of whose the invoice has been issued, if the invoice has been issued in the name of and on behalf of another person or if the invoice has been issued by the recipient of the invoice in the name of and on behalf of the supplier. If the invoice has not been issued in the name of and on behalf of another person, the data is not entered.
         /// </summary>
+        [StringLength(8, MinimumLength = 8)]
         public string SellerTaxNumber { get; set; }
 
         /// <summary>
@@ -31,7 +33,7 @@ namespace MadWare.Furs.Models.Invoice
         /// Podatek je sestavljen iz stopnje, osnove in zneska pavšalnega nadomestila. / The data consists of the rate, base and amount of the flat-rate compensation.
         /// </summary>
         [XmlElement("FlatRateCompensation")]
-        public FlatRateCompensation[] FlatRateCompensation { get; set; }
+        public List<FlatRateCompensation> FlatRateCompensation { get; set; }
 
         /// <summary>
         /// Vpiše se skupni znesek ostalih davkov oziroma dajatev (razen DDV), ki so na računu. / The total amount is entered of other taxes or duties (except VAT), which are on the invoice.
@@ -106,5 +108,17 @@ namespace MadWare.Furs.Models.Invoice
             return this.ExemptVATTaxableAmount.HasValue;
         }
 
+        public override void Validate()
+        {
+            base.Validate();
+
+            if (this.VAT != null)
+                foreach (var v in this.VAT)
+                    v.Validate();
+
+            if (this.FlatRateCompensation != null)
+                foreach (var frc in this.FlatRateCompensation)
+                    frc.Validate();
+        }
     }
 }

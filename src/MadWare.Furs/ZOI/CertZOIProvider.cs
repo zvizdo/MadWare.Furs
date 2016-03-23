@@ -38,11 +38,11 @@ namespace MadWare.Furs.ZOI
             Invoice i = inv.InvoiceRequest.Invoice;
 
             string data = string.Concat( i.TaxNumber,
-                                         i.IssueDateTime.ToString("dd.MM.yyyy HH:mm:ss"),
+                                         i.IssueDateTime.Value.ToString("dd.MM.yyyy HH:mm:ss"),
                                          i.InvoiceIdentifier.InvoiceNumber,
                                          i.InvoiceIdentifier.BusinessPremiseID,
                                          i.InvoiceIdentifier.ElectronicDeviceID,
-                                         i.InvoiceAmount.ToString("N2", CultureInfo.InvariantCulture));
+                                         i.InvoiceAmount.Value.ToString("N2", CultureInfo.InvariantCulture));
 
             byte[] bytes = Encoding.ASCII.GetBytes(data);
 

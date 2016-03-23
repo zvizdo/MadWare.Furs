@@ -12,7 +12,7 @@ namespace MadWare.Furs.Http
     public interface IHttpService
     {
 
-        Task<string> SendEnvelope(string url, string payload, BaseRequestBody b); 
+        Task<string> SendRequest(string url, string payload, BaseRequestBody b); 
 
     }
 }

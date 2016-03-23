@@ -23,5 +23,10 @@ namespace MadWare.Furs.Requests
         /// Get SOAP action of the request
         /// </summary>
         public abstract string GetSOAPAction();
+
+        /// <summary>
+        /// Validates the data of the request
+        /// </summary>
+        public abstract void ValidateBody();
     }
 }

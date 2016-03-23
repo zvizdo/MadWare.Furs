@@ -31,7 +31,7 @@ namespace MadWare.Furs.Http
             return true;
         }
 
-        public async Task<string> SendEnvelope(string url, string payload, BaseRequestBody b)
+        public async Task<string> SendRequest(string url, string payload, BaseRequestBody b)
         {
             WebRequestHandler handler = new WebRequestHandler();
             handler.ClientCertificates.Add(this.cert);

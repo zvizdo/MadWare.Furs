@@ -1,13 +1,14 @@
 ﻿using MadWare.Furs.Models.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace MadWare.Furs.Models.Invoice
 {
-    public class InvoiceRequest
+    public class InvoiceRequest : BaseModel
     {
         [XmlAttribute()]
         public string Id = "data";
@@ -15,6 +16,7 @@ namespace MadWare.Furs.Models.Invoice
         /// <summary>
         /// Glava sporočila / Message header
         /// </summary>
+        [Required]
         public Header Header { get; set; }
 
         /// <summary>
@@ -35,6 +37,17 @@ namespace MadWare.Furs.Models.Invoice
         public bool ShouldSerializeSalesBookInvoice()
         {
             return this.SalesBookInvoice != null;
+        }
+
+        public override void Validate()
+        {
+            base.Validate();
+
+            if (this.Invoice != null)
+                this.Invoice.Validate();
+
+            if (this.SalesBookInvoice != null)
+                this.SalesBookInvoice.Validate();
         }
     }
 }

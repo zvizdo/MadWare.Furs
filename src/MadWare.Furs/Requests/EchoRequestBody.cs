@@ -21,5 +21,10 @@ namespace MadWare.Furs.Requests
         {
             return @"/echo";
         }
+
+        public override void ValidateBody()
+        {
+           
+        }
     }
 }

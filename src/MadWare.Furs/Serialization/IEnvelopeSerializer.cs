@@ -10,9 +10,9 @@ namespace MadWare.Furs.Serialization
     public interface IEnvelopeSerializer
     {
 
-        string SerializeEnvelope(BaseRequestBody b);
+        string SerializeRequest(BaseRequestBody b);
 
-        BaseResponseBody DeserializeEnvelope(BaseRequestBody b);
+        BaseResponseBody DeserializeResponse(BaseRequestBody b);
 
     }
 }

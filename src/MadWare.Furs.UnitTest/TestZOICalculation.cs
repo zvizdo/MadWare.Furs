@@ -51,7 +51,7 @@ namespace MadWare.Furs.UnitTest
                         Invoice = new Models.Invoice.Invoice {
                             TaxNumber = "12345678",
                             IssueDateTime = new DateTime(2016, 3, 20, 20, 0, 0),
-                            InvoiceIdentifier = new Models.Invoice.InvoiceIdentifier { BusinessPremiseID = "PP1", ElectronicDeviceID = "EN1", InvoiceNumber = "123" },
+                            InvoiceIdentifier = new Models.Invoice.InvoiceIdentifier { BusinessPremiseID = "PP1", ElectronicDeviceID = "EN1", InvoiceNumber = 123 },
                             InvoiceAmount = 12.34M
                         } } } }
                 }

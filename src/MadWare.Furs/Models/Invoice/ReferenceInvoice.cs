@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ namespace MadWare.Furs.Models.Invoice
     /// Primer / Example: TRGOVINA1-BLAG2-1234
     /// Podatki se vpisujejo ločeno. / Data are entered separately.
     /// </summary>
-    public class ReferenceInvoice
+    public class ReferenceInvoice : BaseModel
     {
         /// <summary>
         /// Vpiše se številka prvotnega računa v primeru naknadne spremembe podatkov na prvotnem računu, če je bil prvoten račun izdan preko elektronske naprave. / The number of the original invoice is entered in cases of subsequent changes of data on the original invoice if the original invoice has been issued via the electronic device.
@@ -33,6 +34,7 @@ namespace MadWare.Furs.Models.Invoice
         /// Primer / Example: TRGOVINA1-BLAG2-1234
         /// Podatki se vpisujejo ločeno. / Data are entered separately.
         /// </summary>
+        [Required]
         public InvoiceIdentifier ReferenceInvoiceIdentifier { get; set; }
 
         /// <summary>
@@ -44,6 +46,13 @@ namespace MadWare.Furs.Models.Invoice
         public bool ShouldSerializeReferenceInvoiceIssueDateTime()
         {
             return this.ReferenceInvoiceIssueDateTime.HasValue;
+        }
+
+        public override void Validate()
+        {
+            base.Validate();
+
+            this.ReferenceInvoiceIdentifier.Validate();
         }
 
     }

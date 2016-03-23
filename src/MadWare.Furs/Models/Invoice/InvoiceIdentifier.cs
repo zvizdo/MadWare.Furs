@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,21 +18,24 @@ namespace MadWare.Furs.Models.Invoice
     /// Primer / Example: TRGOVINA1-BLAG2-1234
     /// Podatki se vpisujejo ločeno. / Data are entered separately.
     /// </summary>
-    public class InvoiceIdentifier
+    public class InvoiceIdentifier : BaseModel
     {
         /// <summary>
         /// Vsebuje lahko samo črke in številke / It may include only the following letters and numbers: 0-9, a-z, A-Z.
         /// </summary>
+        [Required(), StringLength(20, MinimumLength = 1), RegularExpression("^[0-9a-zA-Z]*$")]
         public string BusinessPremiseID { get; set; }
 
         /// <summary>
         /// Vsebuje lahko samo črke in številke / It may include only the following letters and numbers: 0-9, a-z, A-Z.
         /// </summary>
+        [Required(), StringLength(20, MinimumLength = 1), RegularExpression("^[0-9a-zA-Z]*$")]
         public string ElectronicDeviceID { get; set; }
 
         /// <summary>
         /// Vsebuje lahko samo številke 0-9. Niso dovoljene vodilne ničle. / It may include only numbers 0-9. Zeros cannot be on the first place.
         /// </summary>
-        public string InvoiceNumber { get; set; }
+        [Range(1, int.MaxValue)]
+        public int InvoiceNumber { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -11,24 +12,28 @@ namespace MadWare.Furs.Models.Invoice
         /// <summary>
         /// Vpiše se davčna številka zavezanca, ki je izdal račun. / The tax number of the person liable, who has issued the invoice, is entered.
         /// </summary>
+        [Required(), StringLength(8, MinimumLength = 8)]
         public string TaxNumber { get; set; }
 
         /// <summary>
         /// Vpiše se datum in čas izdaje računa, ki je naveden na računu. / Date and time of issuing the invoice, which is stated on the invoice, are entered.
         /// </summary>
-        public DateTime IssueDateTime { get; set; }
+        [Required]
+        public DateTime? IssueDateTime { get; set; }
 
         /// <summary>
         /// Vpiše se davčna številka oziroma identifikacijska številka za namene DDV kupca oziroma naročnika v primeru, ko so ti podatki v skladu z davčnimi predpisi navedeni na računu.
         /// Podatek se vpiše, če je naveden na računu. / The tax number is entered or identification number for VAT purposes of the buyer or ordering party in cases when these data are stated on the invoice in accordance with tax regulations.
         /// </summary>
+        [StringLength(20, MinimumLength = 1)]
         public string CustomerVATNumber { get; set; }
 
         /// <summary>
         /// Vnese se skupni znesek računa. Vpiše se znesek računa skupaj z DDV in ostalimi davki/dajatvami, zmanjšan za zneske popustov. / The total amount of the invoice is entered. The amount of the invoice is entered together with VAT and other taxes/duties, decreased for amounts of discounts.
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
-        public decimal InvoiceAmount { get; set; }
+        [Required]
+        public decimal? InvoiceAmount { get; set; }
 
         /// <summary>
         /// Vpiše se znesek povračil na računu, ki se priznajo kupcu (npr. na podlagi dobropisa za vračilo embalaže). / The amount of refunds on the invoice, which are recognized to the buyer (e.g. on the basis of credit for returning packaging), is entered.
@@ -41,12 +46,14 @@ namespace MadWare.Furs.Models.Invoice
         /// Vpiše se znesek računa za plačilo. / The amount of the invoice for payment is entered.
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
-        public decimal PaymentAmount { get; set; }
+        [Required]
+        public decimal? PaymentAmount { get; set; }
 
         /// <summary>
         /// Vpiše se vrednost osnov po vrsti davka ali dajatve, razdeljeno po davčnih stopnjah, in pripadajoči davek ali dajatev, vrednost dobav na podlagi posebnih ureditev, dobav pri katerih je plačnik DDV kupec blaga ali naročnik storitve, oproščenih dobav in neobdavčljivih dobav, ločeno po davčnih številkah davčnih zavezancev. / The value is entered for bases according to types of taxes or duties, separated per tax rates, and associated taxes or duties, value of supplies on the basis of special arrangements, supplies where the payer of VAT is the buyer of goods or party ordering services, exempt supplies and non-taxable supplies, separated according to tax numbers of taxpayers.
         /// </summary>
         [XmlElement("TaxesPerSeller")]
+        [Required]
         public List<TaxesPerSeller> TaxesPerSeller { get; set; }
 
         /// <summary>

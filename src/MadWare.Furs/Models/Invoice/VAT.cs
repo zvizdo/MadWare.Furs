@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,25 +13,28 @@ namespace MadWare.Furs.Models.Invoice
     /// Podatek je sestavljen iz davčne stopnje, davčne osnove in zneska davka. / The data consists of the tax rate, tax base and amount of tax.
     /// Za davčne stopnje lahko obstaja seznam davčnih stopenj pri davčnemu organu. / The tax authority may have a list of tax rates.
     /// </summary>
-    public class VAT
+    public class VAT : BaseModel
     {
         /// <summary>
         /// Vrednost davčne stopnje. / Value of the tax rate
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
-        public decimal TaxRate { get; set; }
+        [Required]
+        public decimal? TaxRate { get; set; }
 
         /// <summary>
         /// Znesek davčne osnove (po zmanjšanju za popuste). / Amount of the tax base (after reduction for discounts)
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
-        public decimal TaxableAmount { get; set; }
+        [Required]
+        public decimal? TaxableAmount { get; set; }
 
         /// <summary>
         /// Znesek davka. / Amount of tax
         /// Decimalno ločilo je pika. / The decimal separator is a dot.
         /// </summary>
-        public decimal TaxAmount { get; set; }
+        [Required]
+        public decimal? TaxAmount { get; set; }
 
     }
 }

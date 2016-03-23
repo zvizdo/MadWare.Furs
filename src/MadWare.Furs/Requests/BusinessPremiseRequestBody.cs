@@ -19,5 +19,10 @@ namespace MadWare.Furs.Requests
         {
             return @"/invoices/register";
         }
+
+        public override void ValidateBody()
+        {
+            this.BusinessPremiseRequest.Validate();
+        }
     }
 }

@@ -17,7 +17,14 @@ namespace MadWare.Furs.UnitTest
 
             var e = new EchoRequestBody { EchoRequest = "TEST" };
 
-            string xml = s.SerializeEnvelope(e);
+            string xml = s.SerializeRequest(e);
+
+            var h = new Header
+            {
+                MessageID = "123",
+                DateTime = DateTime.Now
+            };
+            h.Validate();
         }
 
         [Fact]
@@ -44,9 +51,9 @@ namespace MadWare.Furs.UnitTest
                             {
                                 PropertyID = new PropertyID
                                 {
-                                    BuildingNumber = "A",
-                                    BuildingSectionNumber = "c",
-                                    CadastralNumber = "123"
+                                    BuildingNumber = 1,
+                                    BuildingSectionNumber = 99999,
+                                    CadastralNumber = 3
                                 },
                                 Address = new Address
                                 {
@@ -66,8 +73,9 @@ namespace MadWare.Furs.UnitTest
                     }
                 }
             };
+            bp.BusinessPremiseRequest.Validate();
 
-            string xml = s.SerializeEnvelope(bp);
+            string xml = s.SerializeRequest(bp);
         }
 
         [Fact]
@@ -93,7 +101,7 @@ namespace MadWare.Furs.UnitTest
                         {
                             BusinessPremiseID = "TRGOVINA1",
                             ElectronicDeviceID = "BLAG2",
-                            InvoiceNumber = "145"
+                            InvoiceNumber = 145
                         },
                         InvoiceAmount = Math.Round((66.7123M), 2),
                         PaymentAmount = Math.Round(1047.76M, 2),
@@ -122,7 +130,7 @@ namespace MadWare.Furs.UnitTest
                 }
             };
 
-            string xml = s.SerializeEnvelope(inv);
+            string xml = s.SerializeRequest(inv);
         }
 
         [Fact]
@@ -207,7 +215,7 @@ namespace MadWare.Furs.UnitTest
                 }
             };
 
-            string xml = s.SerializeEnvelope(inv);
+            string xml = s.SerializeRequest(inv);
         }
 
     }

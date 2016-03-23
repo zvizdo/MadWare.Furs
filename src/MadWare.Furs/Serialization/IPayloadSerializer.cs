@@ -12,7 +12,7 @@ namespace MadWare.Furs.Serialization
 
         string SerializeRequest(BaseRequestBody b);
 
-        BaseResponseBody DeserializeResponse(BaseRequestBody b);
+        BaseResponseBody DeserializeResponse(string r, Type typeOfRequestBody);
 
     }
 }

@@ -13,9 +13,34 @@ namespace MadWare.Furs.Serialization
 {
     public class XmlPayloadSerializer : IPayloadSerializer
     {
-        public BaseResponseBody DeserializeResponse(BaseRequestBody b)
+        public BaseResponseBody DeserializeResponse(string r, Type typeOfRequestBody)
         {
-            throw new NotImplementedException();
+
+            XmlSerializer xSer = null; ;
+
+            if (typeOfRequestBody == typeof(EchoRequestBody))
+            {
+                xSer = new XmlSerializer(typeof(Envelope<EchoResponseBody>));
+            }
+            else if (typeOfRequestBody == typeof(InvoiceRequestBody))
+            {
+                xSer = new XmlSerializer(typeof(Envelope<InvoiceResponseBody>));
+            }
+            else if(typeOfRequestBody == typeof(BusinessPremiseRequestBody))
+            {
+                xSer = new XmlSerializer(typeof(Envelope<BusinessPremiseResponseBody>));
+            }
+            else
+            {
+                throw new NotSupportedException("This typeOfRequestBody not supported!");
+            }
+
+            using (StringReader sr = new StringReader(r))
+            {
+                var e = xSer.Deserialize(sr);
+                var pInfoBody = e.GetType().GetProperty("Body");
+                return (BaseResponseBody)pInfoBody.GetValue(e);
+            }
         }
 
         public string SerializeRequest(BaseRequestBody b)

@@ -36,7 +36,7 @@ namespace MadWare.Furs.Models.Invoice
             {
                 return this.IssueDateTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
             }
-            set { this.IssueDateTime = Convert.ToDateTime(value); }
+            set { }
         }
 
         /// <summary>

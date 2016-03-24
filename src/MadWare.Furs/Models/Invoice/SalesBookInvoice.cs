@@ -21,16 +21,16 @@ namespace MadWare.Furs.Models.Invoice
         /// </summary>
         [XmlIgnore]
         [Required]
-        public DateTime? IssueDateTime { get; set; }
+        public DateTime? IssueDate { get; set; }
 
-        [XmlElement("IssueDateTime")]
-        public string IssueDateTimeFormatted
+        [XmlElement("IssueDate")]
+        public string IssueDateFormatted
         {
             get
             {
-                return this.IssueDateTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
+                return this.IssueDate.Value.ToUniversalTime().ToString("yyyy-MM-dd");
             }
-            set { this.IssueDateTime = Convert.ToDateTime(value); }
+            set { }
         }
 
         [Required]

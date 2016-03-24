@@ -18,7 +18,7 @@ using Xunit;
 
 namespace MadWare.Furs.UnitTest
 {
-    public class TestHttp
+    public class TestHttp : BaseTestWithCert
     {
 
         [Fact]
@@ -27,21 +27,17 @@ namespace MadWare.Furs.UnitTest
             IPayloadSerializer s = new XmlPayloadSerializer();
             var e = new EchoRequestBody { EchoRequest = "TEST1" };
             string xml = s.SerializeRequest(e);
+           
+            IHttpService service = new SoapHttpService(this.Cert);
 
-            var cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(@"E:\Programiranje\MadWare.Furs\src\MadWare.Furs.UnitTest\10442529-1.p12", "SAMR6ADL8IE6");
-
-            string url = "https://blagajne-test.fu.gov.si:9002/v1/cash_registers";
-
-            IHttpService service = new SoapHttpService(cert);
-
-            string data = await service.SendRequest(url, xml, e);
+            string data = await service.SendRequest(this.TestUrl, xml, e);
         }
 
         [Fact]
         public async void TestHttpClientBusinessPremise()
         {
-            string url = "https://blagajne-test.fu.gov.si:9002/v1/cash_registers";
-            var cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(@"E:\Programiranje\MadWare.Furs\src\MadWare.Furs.UnitTest\10442529-1.p12", "SAMR6ADL8IE6");
+            string url = this.TestUrl;
+            var cert = this.Cert;
 
             #region BusinessPremiseRequestBody
             var bp = new BusinessPremiseRequestBody
@@ -110,8 +106,8 @@ namespace MadWare.Furs.UnitTest
         [Fact]
         public async void TestHttpClientInvoice()
         {
-            string url = "https://blagajne-test.fu.gov.si:9002/v1/cash_registers";
-            var cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(@"E:\Programiranje\MadWare.Furs\src\MadWare.Furs.UnitTest\10442529-1.p12", "SAMR6ADL8IE6");
+            string url = this.TestUrl;
+            var cert = this.Cert;
 
             var inv = new InvoiceRequestBody
             {

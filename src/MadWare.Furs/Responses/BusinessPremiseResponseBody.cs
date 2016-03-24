@@ -16,5 +16,10 @@ namespace MadWare.Furs.Responses
         {
             return this.BusinessPremiseResponse.Id;
         }
+
+        public override bool IsErrorResponse()
+        {
+            return this.BusinessPremiseResponse.IsErrorResponse();
+        }
     }
 }

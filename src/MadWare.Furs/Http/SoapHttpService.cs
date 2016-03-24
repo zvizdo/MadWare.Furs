@@ -44,9 +44,9 @@ namespace MadWare.Furs.Http
 
                 var cnt = new StringContent(payload, Encoding.UTF8, "text/xml");
 
-                HttpResponseMessage resp = await client.PostAsync(url, cnt);
+                HttpResponseMessage resp = await client.PostAsync(url, cnt).ConfigureAwait(false);
 
-                string content = await resp.Content.ReadAsStringAsync();
+                string content = await resp.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return content;
             }
         }

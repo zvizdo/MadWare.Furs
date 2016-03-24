@@ -15,5 +15,10 @@ namespace MadWare.Furs.Responses
         {
             return null;
         }
+
+        public override bool IsErrorResponse()
+        {
+            return false;
+        }
     }
 }

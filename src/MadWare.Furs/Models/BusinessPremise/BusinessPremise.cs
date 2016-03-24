@@ -44,7 +44,7 @@ namespace MadWare.Furs.Models.BusinessPremise
             {
                 return this.ValidityDate.Value.ToUniversalTime().ToString("yyyy-MM-dd");
             }
-            set { this.ValidityDate = DateTime.Parse(value); }
+            set { }
         }
 
         /// <summary>

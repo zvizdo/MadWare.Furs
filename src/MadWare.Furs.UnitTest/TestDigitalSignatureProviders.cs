@@ -10,7 +10,7 @@ using Xunit;
 
 namespace MadWare.Furs.UnitTest
 {
-    public class TestDigitalSignatureProviders
+    public class TestDigitalSignatureProviders : BaseTestWithCert
     {
 
         public static IEnumerable<object[]> TestDataCalculateSigInvoice()
@@ -35,7 +35,7 @@ namespace MadWare.Furs.UnitTest
             IPayloadSerializer s = new XmlPayloadSerializer();
             string payload = s.SerializeRequest(b);
 
-            var cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(@"E:\Programiranje\MadWare.Furs\src\MadWare.Furs.UnitTest\10442529-1.p12", "SAMR6ADL8IE6");
+            var cert = this.Cert;
             IDigitalSignatureProvider sig = new CertXmlDigitalSignatureProvider(cert);
 
             string signedPayload = sig.SignRequest(payload, b);

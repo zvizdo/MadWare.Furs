@@ -17,5 +17,10 @@ namespace MadWare.Furs.Responses
         {
             return this.InvoiceResponse.Id;
         }
+
+        public override bool IsErrorResponse()
+        {
+            return this.InvoiceResponse.IsErrorResponse();
+        }
     }
 }

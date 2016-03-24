@@ -13,6 +13,6 @@ namespace MadWare.Furs.Responses
     [XmlRoot(Namespace = "http://www.fu.gov.si/")]
     public abstract class BaseResponseBody : BaseBody
     {
-
+        public abstract bool IsErrorResponse();
     }
 }

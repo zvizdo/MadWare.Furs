@@ -18,13 +18,6 @@ namespace MadWare.Furs.UnitTest
             var e = new EchoRequestBody { EchoRequest = "TEST" };
 
             string xml = s.SerializeRequest(e);
-
-            var h = new Header
-            {
-                MessageID = "123",
-                DateTime = DateTime.Now
-            };
-            h.Validate();
         }
 
         [Fact]
@@ -151,7 +144,7 @@ namespace MadWare.Furs.UnitTest
                     SalesBookInvoice = new Models.Invoice.SalesBookInvoice
                     {
                         TaxNumber = "99999862",
-                        IssueDateTime = DateTime.Now,
+                        IssueDate = DateTime.Now,
                         SalesBookIdentifier = new Models.Invoice.SalesBookIdentifier
                         {
                             InvoiceNumber = "612",

@@ -93,13 +93,15 @@ namespace MadWare.Furs.Models.Invoice
         /// Primer / Example: TRGOVINA1-BLAG2-1234
         /// Podatki se vpisujejo ločeno. / Data are entered separately.
         /// </summary>
-        public ReferenceInvoice ReferenceInvoice { get; set; }
+        [XmlElement("ReferenceInvoice")]
+        public List<ReferenceInvoice> ReferenceInvoice { get; set; }
 
         /// <summary>
         /// Vpiše se številka izdanega računa iz vezane knjige računov, ki se spreminja, če je bil prvoten račun izdan iz vezane knjige računov. / The number is entered of the issued invoice from the pre-numbered invoice book, which is changed, if the original invoice has been issued from the pre-numbered invoice book.
         /// Podatek se vpiše v primeru, če se z računom, izdanim preko elektronske naprave, spreminja prvoten račun, ki je bil izdan iz vezane knjige računov. / The data is entered in cases when the original invoice is changed, which has been issued from the pre-numbered invoice book, with the invoice, issued via the electronic device.
         /// </summary>
-        public ReferenceSalesBook ReferenceSalesBook { get; set; }
+        [XmlElement("ReferenceSalesBook")]
+        public List<ReferenceSalesBook> ReferenceSalesBook { get; set; }
 
         /// <summary>
         /// Vpišejo se morebitne druge oznake, ki podrobneje pojasnjujejo zapise v zvezi z vsebino izdanih računov in njihove spremembe. / Potential other marks are entered, which explain in detail the records in connection with the content of invoices issued and their changes.
@@ -141,10 +143,12 @@ namespace MadWare.Furs.Models.Invoice
                 tps.Validate();
 
             if (this.ReferenceInvoice != null)
-                this.ReferenceInvoice.Validate();
+                foreach (var ri in this.ReferenceInvoice)
+                    ri.Validate();
 
             if (this.ReferenceSalesBook != null)
-                this.ReferenceSalesBook.Validate();
+                foreach (var rsb in this.ReferenceSalesBook)
+                    rsb.Validate();
         }
 
     }

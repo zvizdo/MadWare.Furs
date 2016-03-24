@@ -76,7 +76,7 @@ namespace MadWare.Furs.UnitTest
                                     City = "VRH",
                                     PostalCode = "1360"
                                 }
-                            }
+                            },
                             //PremiseType = BPIdentifier.PremiseTypeEnum.A
                         },
                         ValidityDate = DateTime.Now.AddYears(1),
@@ -89,7 +89,6 @@ namespace MadWare.Furs.UnitTest
             };
 
             var bpResp = await client.SendRequest<BusinessPremiseResponseBody>(bp);
-
             Assert.Equal(false, bpResp.IsErrorResponse());
         }
 

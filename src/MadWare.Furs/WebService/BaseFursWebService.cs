@@ -82,12 +82,12 @@ namespace MadWare.Furs.WebService
             //serialize payload
             string reqPayload = this.serializer.SerializeRequest(requestBody);
             if (flowControl != null)
-                flowControl.OnRequestPayloadSerialized(reqPayload, requestBody);
+                await flowControl.OnRequestPayloadSerialized(reqPayload, requestBody).ConfigureAwait(false);
 
             //sign request payload
             string signedReqPayload = this.digSigProvider.SignRequest(reqPayload, requestBody);
             if (flowControl != null)
-                flowControl.OnRequestPayloadSigned(signedReqPayload, requestBody);
+                await flowControl.OnRequestPayloadSigned(signedReqPayload, requestBody).ConfigureAwait(false);
 
             //send request
             string responsePayload = await this.httpService.SendRequest(this.Url, signedReqPayload, requestBody).ConfigureAwait(false);
@@ -101,9 +101,9 @@ namespace MadWare.Furs.WebService
 
             if (flowControl != null)
                 if (!responseBody.IsErrorResponse())
-                    flowControl.OnSuccessfulResponse(responsePayload, responseBody);
+                    await flowControl.OnSuccessfulResponse(responsePayload, responseBody).ConfigureAwait(false);
                 else
-                    flowControl.OnErrorResponse(responsePayload, responseBody);
+                    await flowControl.OnErrorResponse(responsePayload, responseBody).ConfigureAwait(false);
 
             return responseBody;
         }

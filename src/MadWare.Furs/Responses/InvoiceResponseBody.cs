@@ -12,5 +12,10 @@ namespace MadWare.Furs.Responses
     public class InvoiceResponseBody : BaseResponseBody
     {
         public InvoiceResponse InvoiceResponse { get; set; }
+
+        public override string GetDataIdValue()
+        {
+            return this.InvoiceResponse.Id;
+        }
     }
 }

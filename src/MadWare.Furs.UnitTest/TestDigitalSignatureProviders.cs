@@ -38,7 +38,7 @@ namespace MadWare.Furs.UnitTest
             var cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(@"E:\Programiranje\MadWare.Furs\src\MadWare.Furs.UnitTest\10442529-1.p12", "SAMR6ADL8IE6");
             IDigitalSignatureProvider sig = new CertXmlDigitalSignatureProvider(cert);
 
-            string signedPayload = sig.Sign(payload, b);
+            string signedPayload = sig.SignRequest(payload, b);
         }
 
     }

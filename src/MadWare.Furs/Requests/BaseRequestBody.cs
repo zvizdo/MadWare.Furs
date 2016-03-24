@@ -14,12 +14,6 @@ namespace MadWare.Furs.Requests
     public abstract class BaseRequestBody : BaseBody
     {
         /// <summary>
-        /// Get the Id reference value on root element for signing
-        /// </summary>
-        /// <returns>Value</returns>
-        public abstract string GetDataIdValue();
-
-        /// <summary>
         /// Get SOAP action of the request
         /// </summary>
         public abstract string GetSOAPAction();

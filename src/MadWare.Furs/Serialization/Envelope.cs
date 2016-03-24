@@ -15,7 +15,11 @@ namespace MadWare.Furs.Serialization
 
     public abstract class BaseBody
     {
-
+        /// <summary>
+        /// Get the Id reference value on root element for signing
+        /// </summary>
+        /// <returns>Value</returns>
+        public abstract string GetDataIdValue();
     }
 
 }

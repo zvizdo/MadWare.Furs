@@ -10,5 +10,10 @@ namespace MadWare.Furs.Responses
     public class EchoResponseBody : BaseResponseBody
     {
         public string EchoResponse { get; set; }
+
+        public override string GetDataIdValue()
+        {
+            return null;
+        }
     }
 }

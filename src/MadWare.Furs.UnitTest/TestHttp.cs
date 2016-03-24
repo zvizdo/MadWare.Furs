@@ -99,7 +99,7 @@ namespace MadWare.Furs.UnitTest
 
             //sign
             IDigitalSignatureProvider dSig = new CertXmlDigitalSignatureProvider(cert);
-            string signedPayload = dSig.Sign(payload, bp);
+            string signedPayload = dSig.SignRequest(payload, bp);
 
             IHttpService http = new SoapHttpService(cert);
 
@@ -167,7 +167,7 @@ namespace MadWare.Furs.UnitTest
 
             //sign
             IDigitalSignatureProvider dSig = new CertXmlDigitalSignatureProvider(cert);
-            string signedPayload = dSig.Sign(payload, inv);
+            string signedPayload = dSig.SignRequest(payload, inv);
 
             IHttpService http = new SoapHttpService(cert);
 

@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Deployment.Internal.CodeSigning;
 using System.Security.Cryptography.Xml;
 using MadWare.Furs.Requests;
+using MadWare.Furs.Responses;
 
 namespace MadWare.Furs.Encryption
 {
@@ -22,22 +23,22 @@ namespace MadWare.Furs.Encryption
             this.cert = cert;
         }
 
-        public string Sign(string payload, BaseRequestBody b)
+        public string SignRequest(string requestPayload, BaseRequestBody b)
         {
             //Get id value of the main payload node
             string dataId = b.GetDataIdValue();
 
             if (string.IsNullOrEmpty(dataId))
-                return payload;
+                return requestPayload;
 
             XmlDocument msg = new XmlDocument();
-            msg.LoadXml(payload);
+            msg.LoadXml(requestPayload);
 
             //get the reference of the main data node - first node with attr Id=dataId
             XmlNode dataNode = msg.SelectSingleNode(string.Format("//*[@Id='{0}']", dataId));
 
             if (dataNode == null)
-                return payload;
+                return requestPayload;
 
             CryptoConfig.AddAlgorithm(typeof(RSAPKCS1SHA256SignatureDescription), "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256");
 
@@ -88,6 +89,11 @@ namespace MadWare.Furs.Encryption
             dataNode.AppendChild(xmlDigitalSignature);
 
             return msg.InnerXml;
+        }
+
+        public bool VerifyResponseSignature(string responsePayload, BaseResponseBody b)
+        {
+            return true;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MadWare.Furs.Requests;
+using MadWare.Furs.Responses;
 using MadWare.Furs.Serialization;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,13 @@ namespace MadWare.Furs.Encryption
         /// <param name="payload">Payload to add signature</param>
         /// <param name="e">Serialized representation of the payload</param>
         /// <returns>Signed payload</returns>
-        string Sign(string payload, BaseRequestBody b);
+        string SignRequest(string requestPayload, BaseRequestBody b);
+
+        /// <summary>
+        /// Verifies response signature
+        /// </summary>
+        /// <param name="responsePayload"></param>
+        /// <returns></returns>
+        bool VerifyResponseSignature(string responsePayload, BaseResponseBody b);
     }
 }

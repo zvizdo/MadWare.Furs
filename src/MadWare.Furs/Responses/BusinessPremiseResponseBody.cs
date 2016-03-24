@@ -11,5 +11,10 @@ namespace MadWare.Furs.Responses
     public class BusinessPremiseResponseBody : BaseResponseBody
     {
         public BusinessPremiseResponse BusinessPremiseResponse { get; set; }
+
+        public override string GetDataIdValue()
+        {
+            return this.BusinessPremiseResponse.Id;
+        }
     }
 }

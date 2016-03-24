@@ -11,7 +11,8 @@ namespace MadWare.Furs.Responses
     [XmlInclude(typeof(Responses.InvoiceResponseBody))]
     [XmlInclude(typeof(Responses.BusinessPremiseResponseBody))]
     [XmlRoot(Namespace = "http://www.fu.gov.si/")]
-    public class BaseResponseBody : BaseBody
+    public abstract class BaseResponseBody : BaseBody
     {
+
     }
 }

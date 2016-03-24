@@ -3,6 +3,7 @@ using MadWare.Furs.Models.Common;
 using MadWare.Furs.Requests;
 using MadWare.Furs.Serialization;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace MadWare.Furs.UnitTest
@@ -59,9 +60,12 @@ namespace MadWare.Furs.UnitTest
                             }
                         },
                         ValidityDate = DateTime.Now.AddYears(1),
-                        SoftwareSupplier = new SoftwareSupplier
+                        SoftwareSupplier = new List<SoftwareSupplier>
                         {
-                            TaxNumber = "87654321"
+                             new SoftwareSupplier
+                            {
+                                TaxNumber = "87654321"
+                            }
                         }
                     }
                 }

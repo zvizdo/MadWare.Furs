@@ -42,10 +42,13 @@ var bp = new BusinessPremiseRequestBody
                 }
             },
             ValidityDate = DateTime.Now.AddYears(1),
-            SoftwareSupplier = new SoftwareSupplier
-            {
-                TaxNumber = "87654321"
-            }
+            SoftwareSupplier = new List<SoftwareSupplier>
+			{
+				 new SoftwareSupplier
+				{
+					TaxNumber = "87654321"
+				}
+			}
         }
     }
 };
@@ -72,10 +75,13 @@ var bp = new BusinessPremiseRequestBody
                 PremiseType = BPIdentifier.PremiseTypeEnum.A
             },
             ValidityDate = DateTime.Now.AddYears(1),
-            SoftwareSupplier = new SoftwareSupplier
-            {
-                TaxNumber = "87654321"
-            }
+            SoftwareSupplier = new List<SoftwareSupplier>
+			{
+				 new SoftwareSupplier
+				{
+					TaxNumber = "87654321"
+				}
+			}
         }
     }
 };
@@ -273,6 +279,7 @@ and you want all your logic to be in one place.
 * Adding support for QRCode generation
 * Write more and better unit tests
 * Make better documentation and examples
+* Add support for ASP.NET Core
 
 All contributors are welcome.
 

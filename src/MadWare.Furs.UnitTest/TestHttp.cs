@@ -27,7 +27,7 @@ namespace MadWare.Furs.UnitTest
             IPayloadSerializer s = new XmlPayloadSerializer();
             var e = new EchoRequestBody { EchoRequest = "TEST1" };
             string xml = s.SerializeRequest(e);
-           
+
             IHttpService service = new SoapHttpService(this.Cert);
 
             string data = await service.SendRequest(this.TestUrl, xml, e);
@@ -75,9 +75,12 @@ namespace MadWare.Furs.UnitTest
                             //PremiseType = BPIdentifier.PremiseTypeEnum.A
                         },
                         ValidityDate = DateTime.Now.AddYears(1),
-                        SoftwareSupplier = new SoftwareSupplier
+                        SoftwareSupplier = new List<SoftwareSupplier>
                         {
-                            TaxNumber = "87654321"
+                             new SoftwareSupplier
+                            {
+                                TaxNumber = "87654321"
+                            }
                         }
                     }
                 }

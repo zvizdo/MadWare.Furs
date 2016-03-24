@@ -61,7 +61,8 @@ namespace MadWare.Furs.Models.BusinessPremise
         /// - naziv in naslov proizvajalca ali vzdrževalca programske opreme, ki nima sedeža v Sloveniji / title and address of the producer or software maintenance provider not established in Slovenia
         /// </summary>
         [Required]
-        public SoftwareSupplier SoftwareSupplier { get; set; }
+        [XmlElement("SoftwareSupplier")]
+        public List<SoftwareSupplier> SoftwareSupplier { get; set; }
 
         /// <summary>
         /// Vpišejo se morebitne druge oznake, ki podrobneje pojasnjujejo zapise v zvezi z vsebino podatkov o poslovnem prostoru. / Any other potential marks are entered, which explain in detail the records in connection with the content of data about business premises.
@@ -83,7 +84,9 @@ namespace MadWare.Furs.Models.BusinessPremise
             base.Validate();
 
             this.BPIdentifier.Validate();
-            this.SoftwareSupplier.Validate();
+
+            foreach (var ss in this.SoftwareSupplier)
+                ss.Validate();
         }
     }
 }

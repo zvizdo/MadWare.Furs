@@ -80,9 +80,12 @@ namespace MadWare.Furs.UnitTest
                             //PremiseType = BPIdentifier.PremiseTypeEnum.A
                         },
                         ValidityDate = DateTime.Now.AddYears(1),
-                        SoftwareSupplier = new SoftwareSupplier
+                        SoftwareSupplier = new List<SoftwareSupplier>
                         {
-                            TaxNumber = "87654321"
+                             new SoftwareSupplier
+                            {
+                                TaxNumber = "87654321"
+                            }
                         }
                     }
                 }

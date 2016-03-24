@@ -159,13 +159,13 @@ var inv = new InvoiceRequestBody
                 {
                     VAT = new List<.VAT>
                     {
-                        new Invoice.VAT
+                        new VAT
                         {
                             TaxRate = 22.00M,
                             TaxableAmount = 36.89M,
                             TaxAmount = 8.12M
                         },
-                        new Models.Invoice.VAT
+                        new VAT
                         {
                             TaxRate = 9.50M,
                             TaxableAmount = 56.53M,
@@ -241,8 +241,31 @@ if( invResponse.IsErrorResponse() ){
 string eor = invResponse.InvoiceResponse.UniqueInvoiceID;
 
 //getting ZOI - only if it is invoice request ( but not sales book invoice request )
+//ZOI is automatically calculated before the request is sent
 string zoi = bpRequest.InvoiceRequest.Invoice.ProtectedID;
 ```
+
+#### Events flow
+
+The *SendRequest* method provides an optional parameter of type *IFursFlowControl*.
+```C#
+    public interface IFursFlowControl<TRequest, TResponse> where TRequest : BaseRequestBody
+                                                           where TResponse : BaseResponseBody
+    {
+        Task OnRequestPayloadSerialized(string requestPayload, TRequest requestBody);
+
+        Task OnRequestPayloadSigned(string signedRequestPayload, TRequest requestBody);
+
+        Task OnSuccessfulResponse(string responsePayload, TResponse responseBody);
+
+        Task OnErrorResponse(string responsePayload, TResponse responseBody);
+    }
+```
+Instead of getting response from the *SendRequest* method itself, you can create your
+own class and implement *IFursFlowControl*. This allows you to have more detailed access to
+the sending process instead of just receiving the reponse. 
+Useful when you have a class that handles invoice database storage, invoice emailing, etc..
+and you want all your logic to be in one place.
 
 ## To-Do
 

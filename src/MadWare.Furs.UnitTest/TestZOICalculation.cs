@@ -54,7 +54,7 @@ namespace MadWare.Furs.UnitTest
                             InvoiceIdentifier = new Models.Invoice.InvoiceIdentifier { BusinessPremiseID = "PP1", ElectronicDeviceID = "EN1", InvoiceNumber = 123 },
                             InvoiceAmount = 12.34M
                         } } },
-                    "937ceef29ef74129f4b384185736919c"
+                    "937ceef29ef74129f4b384185736919c" //would be different for different certificates
                 },
                 new object[] {
                     new InvoiceRequestBody { InvoiceRequest = new Models.Invoice.InvoiceRequest {
@@ -65,7 +65,7 @@ namespace MadWare.Furs.UnitTest
                             InvoiceAmount = 12.34M,
                             OperatorTaxNumber = "87654321"
                         } } },
-                    "937ceef29ef74129f4b384185736919c"
+                    "937ceef29ef74129f4b384185736919c"//would be different for different certificates
                 }
             };
         }

@@ -30,11 +30,6 @@ namespace MadWare.Furs.UnitTest
             {
                 BusinessPremiseRequest = new BusinessPremiseRequest
                 {
-                    Header = new Header
-                    {
-                        MessageID = Guid.NewGuid().ToString(),
-                        DateTime = DateTime.Now
-                    },
                     BusinessPremise = new BusinessPremise
                     {
                         TaxNumber = "12345678",

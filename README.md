@@ -12,11 +12,6 @@ var bp = new BusinessPremiseRequestBody
 {
     BusinessPremiseRequest = new BusinessPremiseRequest
     {
-        Header = new Header
-        {
-            MessageID = Guid.NewGuid().ToString(),
-            DateTime = DateTime.Now
-        },
         BusinessPremise = new BusinessPremise
         {
             TaxNumber = "12345678", //must be the same as in cert
@@ -61,11 +56,6 @@ var bp = new BusinessPremiseRequestBody
 {
     BusinessPremiseRequest = new BusinessPremiseRequest
     {
-        Header = new Header
-        {
-            MessageID = Guid.NewGuid().ToString(),
-            DateTime = DateTime.Now
-        },
         BusinessPremise = new BusinessPremise
         {
             TaxNumber = "12345678", //must be the same as in cert
@@ -94,11 +84,6 @@ var inv = new InvoiceRequestBody
 {
     InvoiceRequest = new InvoiceRequest
     {
-        Header = new Header
-        {
-            MessageID = Guid.NewGuid().ToString(),
-            DateTime = DateTime.Now
-        },
         Invoice = new Invoice
         {
             TaxNumber = "10442529",
@@ -140,11 +125,6 @@ var inv = new InvoiceRequestBody
 {
     InvoiceRequest = new InvoiceRequest
     {
-        Header = new Header
-        {
-            MessageID = Guid.NewGuid().ToString(),
-            DateTime = DateTime.Now
-        },
         SalesBookInvoice = new SalesBookInvoice
         {
             TaxNumber = "10442529",
@@ -218,7 +198,7 @@ Client is set up this way:
 ```C#
 var c = new FursConfig 
 { 
-  Url = url, //test or production url given by Furs 
+  Url = "https://blagajne-test.fu.gov.si:9002/v1/cash_registers", //test or production url given by Furs 
   Certificate = cert //X509Certificate2 object which holds the certificate
 };
 //initializing the client
@@ -255,17 +235,17 @@ string zoi = bpRequest.InvoiceRequest.Invoice.ProtectedID;
 
 The *SendRequest* method provides an optional parameter of type *IFursFlowControl*.
 ```C#
-    public interface IFursFlowControl<TRequest, TResponse> where TRequest : BaseRequestBody
-                                                           where TResponse : BaseResponseBody
-    {
-        Task OnRequestPayloadSerialized(string requestPayload, TRequest requestBody);
+public interface IFursFlowControl<TRequest, TResponse> where TRequest : BaseRequestBody
+													   where TResponse : BaseResponseBody
+{
+	Task OnRequestPayloadSerialized(string requestPayload, TRequest requestBody);
 
-        Task OnRequestPayloadSigned(string signedRequestPayload, TRequest requestBody);
+	Task OnRequestPayloadSigned(string signedRequestPayload, TRequest requestBody);
 
-        Task OnSuccessfulResponse(string responsePayload, TResponse responseBody);
+	Task OnSuccessfulResponse(string responsePayload, TResponse responseBody);
 
-        Task OnErrorResponse(string responsePayload, TResponse responseBody);
-    }
+	Task OnErrorResponse(string responsePayload, TResponse responseBody);
+}
 ```
 Instead of getting response from the *SendRequest* method itself, you can create your
 own class and implement *IFursFlowControl*. This allows you to have more detailed access to
@@ -279,6 +259,7 @@ and you want all your logic to be in one place.
 * Adding support for QRCode generation
 * Write more and better unit tests
 * Make better documentation and examples
+* Add some sort of helpers for common requests like basic invoices etc...
 * Add support for ASP.NET Core
 
 All contributors are welcome.

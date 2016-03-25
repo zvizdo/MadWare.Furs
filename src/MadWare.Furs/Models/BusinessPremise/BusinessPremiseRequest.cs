@@ -25,6 +25,11 @@ namespace MadWare.Furs.Models.BusinessPremise
         [Required]
         public BusinessPremise BusinessPremise { get; set; }
 
+        public BusinessPremiseRequest()
+        {
+            this.Header = new Header();
+        }
+
         public override void Validate()
         {
             base.Validate();

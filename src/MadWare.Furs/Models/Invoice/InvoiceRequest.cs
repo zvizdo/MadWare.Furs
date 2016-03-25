@@ -29,6 +29,11 @@ namespace MadWare.Furs.Models.Invoice
         /// </summary>
         public SalesBookInvoice SalesBookInvoice { get; set; }
 
+        public InvoiceRequest()
+        {
+            this.Header = new Header();
+        }
+
         public bool ShouldSerializeInvoice()
         {
             return this.Invoice != null;

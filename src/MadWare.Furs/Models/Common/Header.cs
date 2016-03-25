@@ -32,5 +32,11 @@ namespace MadWare.Furs.Models.Common
             }
             set { this.DateTime = Convert.ToDateTime(value); }
         }
+
+        public Header()
+        {
+            this.MessageID = Guid.NewGuid().ToString();
+            this.DateTime = System.DateTime.Now;
+        }
     }
 }

@@ -229,6 +229,10 @@ string eor = invResponse.InvoiceResponse.UniqueInvoiceID;
 //getting ZOI - only if it is invoice request ( but not sales book invoice request )
 //ZOI is automatically calculated before the request is sent
 string zoi = bpRequest.InvoiceRequest.Invoice.ProtectedID;
+
+//generating QR code
+//note that namespace using MadWare.Furs.Extensions; must be added
+string qrCode = bpRequest.InvoiceRequest.Invoice.GenerateQRCode();
 ```
 
 #### Events flow
@@ -256,11 +260,11 @@ and you want all your logic to be in one place.
 ## To-Do
 
 * the library is currently in beta thus it should and will be extensively tested before version 1.0.0 is released.
-* Adding support for QRCode generation
 * Write more and better unit tests
 * Make better documentation and examples
 * Add some sort of helpers for common requests like basic invoices etc...
 * Add support for ASP.NET Core
+* Add support for Json version(?)
 
 All contributors are welcome.
 

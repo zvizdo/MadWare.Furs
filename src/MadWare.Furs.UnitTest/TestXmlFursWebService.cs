@@ -49,11 +49,6 @@ namespace MadWare.Furs.UnitTest
             {
                 BusinessPremiseRequest = new BusinessPremiseRequest
                 {
-                    Header = new Header
-                    {
-                        MessageID = Guid.NewGuid().ToString(),
-                        DateTime = DateTime.Now
-                    },
                     BusinessPremise = new BusinessPremise
                     {
                         TaxNumber = "10442529", //must be the same as in test cert
@@ -106,11 +101,6 @@ namespace MadWare.Furs.UnitTest
             {
                 InvoiceRequest = new Models.Invoice.InvoiceRequest
                 {
-                    Header = new Header
-                    {
-                        MessageID = Guid.NewGuid().ToString(),
-                        DateTime = DateTime.Now
-                    },
                     Invoice = new Models.Invoice.Invoice
                     {
                         TaxNumber = "10442529",
@@ -160,11 +150,6 @@ namespace MadWare.Furs.UnitTest
             {
                 InvoiceRequest = new Models.Invoice.InvoiceRequest
                 {
-                    Header = new Header
-                    {
-                        MessageID = Guid.NewGuid().ToString(),
-                        DateTime = DateTime.Now
-                    },
                     SalesBookInvoice = new Models.Invoice.SalesBookInvoice
                     {
                         TaxNumber = "10442529",

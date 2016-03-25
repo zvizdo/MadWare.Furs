@@ -36,6 +36,12 @@ namespace MadWare.Furs.Models.BusinessPremise
         {
             base.Validate();
 
+            if (this.RealEstateBP != null && this.PremiseType != null)
+                throw new Exception("RealEstateBP and PremiseType can not both be included in BPIdentifier.");
+
+            if(this.RealEstateBP == null && this.PremiseType == null)
+                throw new Exception("RealEstateBP and PremiseType can not both be null in BPIdentifier.");
+
             if (this.RealEstateBP != null)
                 this.RealEstateBP.Validate();
         }

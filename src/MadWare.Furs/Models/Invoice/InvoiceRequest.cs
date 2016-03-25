@@ -50,6 +50,12 @@ namespace MadWare.Furs.Models.Invoice
 
             this.Header.Validate();
 
+            if (this.Invoice != null && this.SalesBookInvoice != null)
+                throw new Exception("Invoice and SalesBookInvoice can not be both included in InvoiceRequest.");
+
+            if(this.Invoice == null && this.SalesBookInvoice == null)
+                throw new Exception("Invoice and SalesBookInvoice can not be both be null in InvoiceRequest.");
+
             if (this.Invoice != null)
                 this.Invoice.Validate();
 

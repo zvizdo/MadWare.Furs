@@ -43,6 +43,17 @@
         "System.ComponentModel": "4.0.0.0",
         "System.ComponentModel.DataAnnotations": "4.0.0.0"
       }
+    },
+    "net46": {
+      "frameworkAssemblies": {
+        "System.Xml": "4.0.0.0",
+        "System.Xml.Serialization": "4.0.0.0",
+        "System.Security": "4.0.0.0",
+        "System.Deployment": "4.0.0.0",
+        "System.Net.Http.WebRequest": "4.0.0.0",
+        "System.ComponentModel": "4.0.0.0",
+        "System.ComponentModel.DataAnnotations": "4.0.0.0"
+      }
     }
   }
 }

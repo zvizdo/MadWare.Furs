@@ -9,8 +9,8 @@ namespace MadWare.Furs.WebService
         public X509Certificate2 Certificate { get; set; }
 
         /// <summary>
-        /// Timeout in seconds when calling service. Default value is 3.
+        /// Timeout in seconds when calling service. Default value is 2.
         /// </summary>
-        public int HttpTimeout = 3;
+        public int HttpTimeout = 2;
     }
 }

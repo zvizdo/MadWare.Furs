@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MadWare.Furs.Requests;
-using System.Xml.Serialization;
+﻿using MadWare.Furs.Requests;
+using MadWare.Furs.Responses;
+using System;
 using System.IO;
 using System.Xml;
-using MadWare.Furs.Responses;
-using MadWare.Furs.Serialization;
+using System.Xml.Serialization;
 
 namespace MadWare.Furs.Serialization
 {
@@ -15,8 +11,7 @@ namespace MadWare.Furs.Serialization
     {
         public BaseResponseBody DeserializeResponse(string r, Type typeOfRequestBody)
         {
-
-            XmlSerializer xSer = null; ;
+            XmlSerializer xSer = null;
 
             if (typeOfRequestBody == typeof(EchoRequestBody))
             {
@@ -26,7 +21,7 @@ namespace MadWare.Furs.Serialization
             {
                 xSer = new XmlSerializer(typeof(Envelope<InvoiceResponseBody>));
             }
-            else if(typeOfRequestBody == typeof(BusinessPremiseRequestBody))
+            else if (typeOfRequestBody == typeof(BusinessPremiseRequestBody))
             {
                 xSer = new XmlSerializer(typeof(Envelope<BusinessPremiseResponseBody>));
             }

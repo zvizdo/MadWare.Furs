@@ -1,13 +1,8 @@
 ﻿using MadWare.Furs.Validation;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MadWare.Furs.Models.Invoice
 {
-
     /// <summary>
     /// Vpišejo se podatki o DDV. / Data about VAT are entered.
     /// Podatek se posreduje le, če račun vsebuje znesek obračunanega DDV. / The data is submitted only if the invoice includes the amount of VAT settled.
@@ -36,6 +31,5 @@ namespace MadWare.Furs.Models.Invoice
         /// </summary>
         [Required, DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? TaxAmount { get; set; }
-
     }
 }

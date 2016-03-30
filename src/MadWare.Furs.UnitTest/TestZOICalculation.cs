@@ -1,17 +1,13 @@
 ﻿using MadWare.Furs.Requests;
-using MadWare.Furs.Serialization;
 using MadWare.Furs.ZOI;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace MadWare.Furs.UnitTest
 {
     public class TestZOICalculation : BaseTestWithCert
     {
-
         public static IEnumerable<object[]> TestDataMustCalculateZOI()
         {
             return new[] {
@@ -83,8 +79,5 @@ namespace MadWare.Furs.UnitTest
 
             Assert.Equal(expectedZoi, zoi);
         }
-
-
-
     }
 }

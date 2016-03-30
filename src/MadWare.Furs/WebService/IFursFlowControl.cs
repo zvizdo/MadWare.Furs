@@ -1,8 +1,5 @@
 ﻿using MadWare.Furs.Requests;
 using MadWare.Furs.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MadWare.Furs.WebService
@@ -21,12 +18,9 @@ namespace MadWare.Furs.WebService
 
     public interface IFursFlowControl<TResponse> : IFursFlowControl<BaseRequestBody, TResponse> where TResponse : BaseResponseBody
     {
-
     }
 
     public interface IFursFlowControl : IFursFlowControl<BaseResponseBody>
     {
-
     }
-
 }

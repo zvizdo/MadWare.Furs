@@ -7,20 +7,12 @@ using MadWare.Furs.Serialization;
 using MadWare.Furs.ZOI;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using Xunit;
 
 namespace MadWare.Furs.UnitTest
 {
     public class TestHttp : BaseTestWithCert
     {
-
         [Fact]
         public async void TestHttpClient()
         {
@@ -40,6 +32,7 @@ namespace MadWare.Furs.UnitTest
             var cert = this.Cert;
 
             #region BusinessPremiseRequestBody
+
             var bp = new BusinessPremiseRequestBody
             {
                 BusinessPremiseRequest = new BusinessPremiseRequest
@@ -85,7 +78,9 @@ namespace MadWare.Furs.UnitTest
                     }
                 }
             };
-            #endregion
+
+            #endregion BusinessPremiseRequestBody
+
             bp.ValidateBody();
             //serialize first
             IPayloadSerializer s = new XmlPayloadSerializer();
@@ -103,7 +98,6 @@ namespace MadWare.Furs.UnitTest
             IHttpService http = new SoapHttpService(cert);
 
             string resp = await http.SendRequest(url, signedPayload, bp);
-
         }
 
         [Fact]
@@ -171,8 +165,6 @@ namespace MadWare.Furs.UnitTest
             IHttpService http = new SoapHttpService(cert);
 
             string resp = await http.SendRequest(url, signedPayload, inv);
-
         }
-
     }
 }

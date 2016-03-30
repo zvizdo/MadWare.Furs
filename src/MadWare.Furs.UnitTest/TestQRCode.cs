@@ -1,18 +1,15 @@
-﻿using MadWare.Furs.Models.Common;
+﻿using MadWare.Furs.Extensions;
+using MadWare.Furs.Models.Common;
 using MadWare.Furs.Models.Invoice;
 using MadWare.Furs.QRCode;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Xunit;
-using MadWare.Furs.Extensions;
 
 namespace MadWare.Furs.UnitTest
 {
     public class TestQRCode
     {
-
         public static IEnumerable<object[]> TestQRCodeData()
         {
             return new[] {
@@ -121,7 +118,7 @@ namespace MadWare.Furs.UnitTest
 
             try
             {
-                string qrCodeTest = qrp.GenerateQRCode( m.ToQRCodeModel() );
+                string qrCodeTest = qrp.GenerateQRCode(m.ToQRCodeModel());
                 Assert.Equal(qrCode, qrCodeTest);
             }
             catch
@@ -146,6 +143,5 @@ namespace MadWare.Furs.UnitTest
                 Assert.Equal(valid, false);
             }
         }
-
     }
 }

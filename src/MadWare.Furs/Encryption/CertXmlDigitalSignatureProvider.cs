@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MadWare.Furs.Serialization;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml;
-using System.Security.Cryptography;
-using System.Deployment.Internal.CodeSigning;
-using System.Security.Cryptography.Xml;
-using MadWare.Furs.Requests;
+﻿using MadWare.Furs.Requests;
 using MadWare.Furs.Responses;
+using System;
+using System.Deployment.Internal.CodeSigning;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography.Xml;
+using System.Xml;
 
 namespace MadWare.Furs.Encryption
 {
     public class CertXmlDigitalSignatureProvider : IDigitalSignatureProvider
     {
-
         private X509Certificate2 cert;
 
         public CertXmlDigitalSignatureProvider(X509Certificate2 cert)
@@ -79,10 +74,10 @@ namespace MadWare.Furs.Encryption
             xmlSig.KeyInfo = keyInfo;
             xmlSig.SignedInfo.SignatureMethod = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256";
 
-            // Compute the signature.            
+            // Compute the signature.
             xmlSig.ComputeSignature();
 
-            // Get the XML representation of the signature and save 
+            // Get the XML representation of the signature and save
             // it to an XmlElement object.
             XmlElement xmlDigitalSignature = xmlSig.GetXml();
 

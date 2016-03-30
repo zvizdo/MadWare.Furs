@@ -1,22 +1,17 @@
 ﻿using MadWare.Furs.Models.Common;
 using MadWare.Furs.Models.Invoice;
 using MadWare.Furs.QRCode;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MadWare.Furs.Extensions
 {
     public static class ModelHelperExtensions
     {
-
         /// <summary>
         /// Converts Invoice model to QRCodeModel class that is suitable for IQRCodeProvider
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        public static QRCodeModel ToQRCodeModel( this Invoice i)
+        public static QRCodeModel ToQRCodeModel(this Invoice i)
         {
             return new QRCodeModel
             {
@@ -41,6 +36,5 @@ namespace MadWare.Furs.Extensions
 
             return qrp.GenerateQRCode(qrm);
         }
-
     }
 }

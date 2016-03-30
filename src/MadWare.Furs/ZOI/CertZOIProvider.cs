@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MadWare.Furs.Serialization;
+﻿using MadWare.Furs.Models.Invoice;
 using MadWare.Furs.Requests;
-using MadWare.Furs.Models.Invoice;
-using System.Security.Cryptography.X509Certificates;
 using System.Globalization;
-using System.Text;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace MadWare.Furs.ZOI
 {
@@ -37,7 +32,7 @@ namespace MadWare.Furs.ZOI
             var inv = b as InvoiceRequestBody;
             Invoice i = inv.InvoiceRequest.Invoice;
 
-            string data = string.Concat( i.TaxNumber,
+            string data = string.Concat(i.TaxNumber,
                                          i.IssueDateTime.Value.ToString("dd.MM.yyyy HH:mm:ss"),
                                          i.InvoiceIdentifier.InvoiceNumber,
                                          i.InvoiceIdentifier.BusinessPremiseID,
@@ -73,6 +68,5 @@ namespace MadWare.Furs.ZOI
 
             return true;
         }
-
     }
 }

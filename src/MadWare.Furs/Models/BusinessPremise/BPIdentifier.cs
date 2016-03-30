@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MadWare.Furs.Models.BusinessPremise
 {
@@ -39,7 +36,7 @@ namespace MadWare.Furs.Models.BusinessPremise
             if (this.RealEstateBP != null && this.PremiseType != null)
                 throw new Exception("RealEstateBP and PremiseType can not both be included in BPIdentifier.");
 
-            if(this.RealEstateBP == null && this.PremiseType == null)
+            if (this.RealEstateBP == null && this.PremiseType == null)
                 throw new Exception("RealEstateBP and PremiseType can not both be null in BPIdentifier.");
 
             if (this.RealEstateBP != null)

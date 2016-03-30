@@ -1,29 +1,15 @@
-﻿using MadWare.Furs.Encryption;
-using MadWare.Furs.Http;
-using MadWare.Furs.Models.BusinessPremise;
-using MadWare.Furs.Models.Common;
+﻿using MadWare.Furs.Models.BusinessPremise;
 using MadWare.Furs.Requests;
 using MadWare.Furs.Responses;
-using MadWare.Furs.Serialization;
 using MadWare.Furs.WebService;
-using MadWare.Furs.ZOI;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using Xunit;
 
 namespace MadWare.Furs.UnitTest
 {
     public class TestXmlFursWebService : BaseTestWithCert
     {
-
         [Fact]
         public async void TestEcho()
         {
@@ -35,7 +21,7 @@ namespace MadWare.Furs.UnitTest
 
             var echoResp = await client.SendRequest<EchoResponseBody>(echoReq);
 
-            Assert.Equal(echoReq.EchoRequest, echoResp.EchoResponse );
+            Assert.Equal(echoReq.EchoRequest, echoResp.EchoResponse);
         }
 
         [Fact]
@@ -213,6 +199,5 @@ namespace MadWare.Furs.UnitTest
 
             Assert.Equal(false, invResp.IsErrorResponse());
         }
-
     }
 }

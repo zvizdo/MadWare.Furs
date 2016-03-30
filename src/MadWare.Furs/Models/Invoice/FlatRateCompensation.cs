@@ -1,9 +1,5 @@
 ﻿using MadWare.Furs.Validation;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MadWare.Furs.Models.Invoice
 {
@@ -34,6 +30,5 @@ namespace MadWare.Furs.Models.Invoice
         /// </summary>
         [Required, DecimalPlacesValidation(RequiredDecimalPlaces = 2)]
         public decimal? FlatRateAmount { get; set; }
-
     }
 }

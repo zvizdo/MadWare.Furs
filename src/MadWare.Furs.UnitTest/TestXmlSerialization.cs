@@ -10,7 +10,6 @@ namespace MadWare.Furs.UnitTest
 {
     public class TestXmlSerialization
     {
-
         [Fact]
         public void TestEchoSerialize()
         {
@@ -210,7 +209,5 @@ namespace MadWare.Furs.UnitTest
 
             string xml = s.SerializeRequest(inv);
         }
-
     }
-
 }

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace MadWare.Furs.Models.Common
@@ -23,6 +20,7 @@ namespace MadWare.Furs.Models.Common
         [XmlIgnore]
         [Required]
         public DateTime? DateTime { get; set; }
+
         [XmlElement("DateTime")]
         public string DateTimeFormatted
         {

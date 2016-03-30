@@ -1,8 +1,7 @@
-﻿using System;
+﻿using MadWare.Furs.Models.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using MadWare.Furs.Models.Common;
 using System.Text;
 
 namespace MadWare.Furs.QRCode
@@ -66,7 +65,7 @@ namespace MadWare.Furs.QRCode
 
             int m10 = this.Modulo10(sb.ToString());
             sb.Append(m10.ToString());
-            
+
             return sb.ToString();
         }
     }

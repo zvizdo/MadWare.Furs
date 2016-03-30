@@ -2,10 +2,6 @@
 using MadWare.Furs.Http;
 using MadWare.Furs.Serialization;
 using MadWare.Furs.ZOI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MadWare.Furs.WebService
 {
@@ -22,6 +18,5 @@ namespace MadWare.Furs.WebService
         {
             this.FursConfig = FursConfig;
         }
-
     }
 }

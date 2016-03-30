@@ -1,7 +1,5 @@
 ﻿using MadWare.Furs.Models.BusinessPremise;
-using MadWare.Furs.Serialization;
 using System.Xml.Serialization;
-using System;
 
 namespace MadWare.Furs.Requests
 {

@@ -1,10 +1,6 @@
-﻿using MadWare.Furs.Models.BusinessPremise;
-using MadWare.Furs.Models.Common;
-using MadWare.Furs.Requests;
+﻿using MadWare.Furs.Requests;
 using MadWare.Furs.Responses;
 using MadWare.Furs.Serialization;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Xunit;
 
@@ -12,7 +8,6 @@ namespace MadWare.Furs.UnitTest
 {
     public class TestXmlDeserialization
     {
-
         public static IEnumerable<object[]> TestEchoResponses()
         {
             return new[] {
@@ -39,7 +34,7 @@ namespace MadWare.Furs.UnitTest
 
             var echo = s.DeserializeResponse(r, typeof(EchoRequestBody)) as EchoResponseBody;
 
-            Assert.Equal( value, echo.EchoResponse );
+            Assert.Equal(value, echo.EchoResponse);
         }
 
         public static IEnumerable<object[]> TestInvoiceResponses()
@@ -81,7 +76,6 @@ namespace MadWare.Furs.UnitTest
         [MemberData("TestInvoiceResponses")]
         public void TestInvoiceDeserialize(string r, bool valid)
         {
-
             IPayloadSerializer s = new XmlPayloadSerializer();
 
             var inv = s.DeserializeResponse(r, typeof(InvoiceRequestBody)) as InvoiceResponseBody;
@@ -103,7 +97,6 @@ namespace MadWare.Furs.UnitTest
                 Assert.NotNull(inv.InvoiceResponse.Error);
                 Assert.Equal("s001", inv.InvoiceResponse.Error.ErrorCode);
             }
-
         }
 
         public static IEnumerable<object[]> TestBusinessPremiseResponses()
@@ -157,16 +150,12 @@ namespace MadWare.Furs.UnitTest
             Assert.Equal(valid, !bp.BusinessPremiseResponse.IsErrorResponse());
             if (valid)
             {
-
             }
             else
             {
                 Assert.NotNull(bp.BusinessPremiseResponse.Error);
                 Assert.Equal("s001", bp.BusinessPremiseResponse.Error.ErrorCode);
             }
-
         }
-
     }
-
 }

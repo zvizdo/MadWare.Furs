@@ -259,7 +259,6 @@ and you want all your logic to be in one place.
 
 ## To-Do
 
-* the library is currently in beta thus it should and will be extensively tested before version 1.0.0 is released.
 * Write more and better unit tests
 * Make better documentation and examples
 * Add some sort of helpers for common requests like basic invoices etc...

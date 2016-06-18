@@ -6,6 +6,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.p12
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -210,3 +211,4 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/src/MadWare.Furs.UnitTest/TestXmlFursWebService - Copy.cs

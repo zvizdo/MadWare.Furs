@@ -38,34 +38,34 @@ namespace MadWare.Furs.UnitTest
                     BusinessPremise = new BusinessPremise
                     {
                         TaxNumber = "10442529", //must be the same as in test cert
-                        BusinessPremiseID = "MWTEST",
+                        BusinessPremiseID = "2MOBILE",
                         BPIdentifier = new BPIdentifier
                         {
                             RealEstateBP = new RealEstateBP
                             {
                                 PropertyID = new PropertyID
                                 {
-                                    BuildingNumber = 123,
-                                    BuildingSectionNumber = 12,
-                                    CadastralNumber = 1234
+                                    BuildingNumber = 1,
+                                    BuildingSectionNumber = 2,
+                                    CadastralNumber = 3
                                 },
                                 Address = new Address
                                 {
-                                    HouseNumber = "168",
-                                    Street = "DG",
-                                    Community = "VRH",
-                                    City = "VRH",
-                                    PostalCode = "1360"
+                                    HouseNumber = "1",
+                                    Street = "Str1",
+                                    Community = "Ljubljana",
+                                    City = "Ljubljana",
+                                    PostalCode = "1000"
                                 }
                             },
                             //PremiseType = BPIdentifier.PremiseTypeEnum.A
                         },
-                        ValidityDate = DateTime.Now.AddYears(1),
+                        ValidityDate = DateTime.Now,
                         SoftwareSupplier = new List<SoftwareSupplier>
                         {
                              new SoftwareSupplier
                             {
-                                TaxNumber = "87654321"
+                                TaxNumber = "84654321"
                             }
                         }
                     }

@@ -19,7 +19,7 @@ namespace MadWare.Furs.UnitTest
 
             var echoReq = new EchoRequestBody { EchoRequest = "TEST ECHO" };
 
-            var echoResp = await client.SendRequest<EchoResponseBody>(echoReq);
+            var echoResp = await client.SendRequestAsync<EchoResponseBody>(echoReq);
 
             Assert.Equal(echoReq.EchoRequest, echoResp.EchoResponse);
         }
@@ -72,7 +72,7 @@ namespace MadWare.Furs.UnitTest
                 }
             };
 
-            var bpResp = await client.SendRequest<BusinessPremiseResponseBody>(bp);
+            var bpResp = await client.SendRequestAsync<BusinessPremiseResponseBody>(bp);
             Assert.Equal(false, bpResp.IsErrorResponse());
         }
 
@@ -120,7 +120,7 @@ namespace MadWare.Furs.UnitTest
                 }
             };
 
-            var invResp = await client.SendRequest<InvoiceResponseBody>(inv);
+            var invResp = await client.SendRequestAsync<InvoiceResponseBody>(inv);
 
             Assert.Equal(false, invResp.IsErrorResponse());
         }
@@ -195,7 +195,7 @@ namespace MadWare.Furs.UnitTest
                 }
             };
 
-            var invResp = await client.SendRequest<InvoiceResponseBody>(inv);
+            var invResp = await client.SendRequestAsync<InvoiceResponseBody>(inv);
 
             Assert.Equal(false, invResp.IsErrorResponse());
         }

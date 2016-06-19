@@ -67,7 +67,7 @@ namespace MadWare.Furs.WebService
             this.httpService = hs;
         }
 
-        public async Task<TResponse> SendRequest<TRequest, TResponse>(TRequest requestBody, IFursFlowControl<TRequest, TResponse> flowControl = null) where TRequest : BaseRequestBody
+        public async Task<TResponse> SendRequestAsync<TRequest, TResponse>(TRequest requestBody, IFursFlowControl<TRequest, TResponse> flowControl = null) where TRequest : BaseRequestBody
                                                                                             where TResponse : BaseResponseBody
         {
             //validate request first
@@ -106,14 +106,14 @@ namespace MadWare.Furs.WebService
             return responseBody;
         }
 
-        public async Task<TResponse> SendRequest<TResponse>(BaseRequestBody requestBody, IFursFlowControl<TResponse> flowControl = null) where TResponse : BaseResponseBody
+        public async Task<TResponse> SendRequestAsync<TResponse>(BaseRequestBody requestBody, IFursFlowControl<TResponse> flowControl = null) where TResponse : BaseResponseBody
         {
-            return await this.SendRequest<BaseRequestBody, TResponse>(requestBody, flowControl).ConfigureAwait(false);
+            return await this.SendRequestAsync<BaseRequestBody, TResponse>(requestBody, flowControl).ConfigureAwait(false);
         }
 
-        public async Task<BaseResponseBody> SendRequest(BaseRequestBody requestBody, IFursFlowControl flowControl = null)
+        public async Task<BaseResponseBody> SendRequestAsync(BaseRequestBody requestBody, IFursFlowControl flowControl = null)
         {
-            return await this.SendRequest<BaseResponseBody>(requestBody, flowControl);
+            return await this.SendRequestAsync<BaseResponseBody>(requestBody, flowControl);
         }
     }
 }

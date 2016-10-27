@@ -2,12 +2,14 @@
   "version": "1.0-0-*",
   "description": "MadWare.Furs Class Library",
   "authors": [ "ZviZdo" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "packOptions": {},
 
   "dependencies": {
     "System.Net.Http": "4.0.0"
+  },
+
+  "buildOptions": {
+  
   },
 
   "frameworks": {
